@@ -1,7 +1,9 @@
 function App() {
   return (
     <>
-      <div>App</div>
+      <div className="bg-gray-800 h-screen">
+        <span className="text-h1 font-bold">Wassup homie</span>
+      </div>
     </>
   );
 }

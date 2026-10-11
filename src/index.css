@@ -1,1 +1,109 @@
 @import 'tailwindcss';
+@plugin "@iconify/tailwind4" {
+  prefix: 'iconify';
+}
+
+@theme {
+  --font-sans: 'Montserrat', sans-serif;
+
+  --color-primary-color: #23a6f0;
+  --color-secondary-color-1: #23856d;
+  --color-secondary-color-2: #3c403d;
+  --color-dark-background-color: #252b42;
+  --color-light-background-color: #ffffff;
+  --color-success-color: #2dc071;
+  --color-alert-color: #e77c40;
+  --color-danger-color: #e74040;
+  --color-hover-color: #2a7cc7;
+  --color-disabled-element-color: #8ec2f2;
+  --color-muted-color: #bdbdbd;
+  --color-light-gray-1: #fafafa;
+  --color-light-gray-2: #ececec;
+  --color-primary-text-color: #23a6f0;
+  --color-secondary-text-color-1: #40bb15;
+  --color-secondary-text-color-2: #3c403d;
+  --color-text-color: #252b42;
+  --color-second-text-color: #737373;
+  --color-light-text-color: #ffffff;
+  --color-success-text-color: #2dc071;
+  --color-alert-text-color: #e77c40;
+  --color-danger-text-color: #e74040;
+  --color-hover-text-color: #2a7cc7;
+  --color-disabled-element-text-color: #8ec2f2;
+  --color-muted-text-color: #bdbdbd;
+  --color-light-text-gray-1: #fafafa;
+  --color-light-text-gray-2: #ececec;
+  --color-faded-primary-color: #b2e3ff;
+  --color-faded-secondary-color-1: #b9eaa8;
+  --color-faded-secondary-color-2: #ffdcd1;
+  --color-light-background: #ffffff;
+
+  --text-h0: 90px;
+  --text-h0--line-height: 90px;
+  --text-h0--font-weight: 700;
+  --text-h0--letter-spacing: 0.2px;
+
+  --text-h1: 58px;
+  --text-h1--line-height: 80px;
+  --text-h1--font-weight: 700;
+  --text-h1--letter-spacing: 0.2px;
+
+  --text-h2: 40px;
+  --text-h2--line-height: 50px;
+  --text-h2--font-weight: 700;
+  --text-h2--letter-spacing: 0.2px;
+
+  --text-h3: 24px;
+  --text-h3--line-height: 32px;
+  --text-h3--font-weight: 700;
+  --text-h3--letter-spacing: 0.1px;
+
+  --text-h4: 20px;
+  --text-h4--line-height: 30px;
+  --text-h4--font-weight: 400;
+  --text-h4--letter-spacing: 0.2px;
+
+  --text-h5: 16px;
+  --text-h5--line-height: 24px;
+  --text-h5--font-weight: 700;
+  --text-h5--letter-spacing: 0.1px;
+
+  --text-h6: 14px;
+  --text-h6--line-height: 24px;
+  --text-h6--font-weight: 700;
+  --text-h6--letter-spacing: 0.2px;
+
+  --text-btn-text: 14px;
+  --text-btn-text--line-height: 22px;
+  --text-btn-text--font-weight: 700;
+  --text-btn-text--letter-spacing: 0.2px;
+
+  --text-mobile-menu: 30px;
+  --text-mobile-menu--line-height: 45px;
+  --text-mobile-menu--font-weight: 400;
+  --text-mobile-menu--letter-spacing: 0.2px;
+
+  --text-paragraph: 14px;
+  --text-paragraph--line-height: 20px;
+  --text-paragraph--font-weight: 400;
+  --text-paragraph--letter-spacing: 0.2px;
+
+  --text-list: 20px;
+  --text-list--line-height: 30px;
+  --text-list--font-weight: 400;
+  --text-list--letter-spacing: 0.2px;
+
+  --text-link: 14px;
+  --text-link--line-height: 24px;
+  --text-link--font-weight: 700;
+  --text-link--letter-spacing: 0.2px;
+
+  --text-small: 12px;
+  --text-small--line-height: 16px;
+  --text-small--font-weight: 400;
+  --text-small--letter-spacing: 0.2px;
+
+  --shadow-accentued: 0px 13px 19px 0px rgba(0, 0, 0, 0);
+  --shadow-dramatic: -31px -22px 19px 0px rgba(0, 0, 0, 0);
+  --shadow-light: 0px 2px 4px 0px rgba(0, 0, 0, 0);
+}
