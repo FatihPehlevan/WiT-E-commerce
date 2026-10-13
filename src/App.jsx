@@ -1,9 +1,13 @@
+import Header from '@/layout/Header';
+import PageContent from '@/layout/PageCOntent';
+import Footer from '@/layout/Footer';
+
 function App() {
   return (
     <>
-      <div className="bg-gray-800 h-screen">
-        <span className="text-h1 font-bold">Wassup homie</span>
-      </div>
+      <Header />
+      <PageContent />
+      <Footer />
     </>
   );
 }
