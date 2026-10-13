@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router';
-import HomePage from '@/pages/HomePage.jsx';
+import HomePage from '@/pages/HomePage';
 
 export default function PageContent() {
   return (
