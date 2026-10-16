@@ -5,7 +5,7 @@ import { navLinks } from '@/data/data.js';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <header className="pt-10 max-w6xl px-10 mx-auto">
+    <header className="pt-10 max-w-6xl px-10 mx-auto">
       <div className="hidden lg:flex">Blue strip</div>
       <div className="flex justify-between text-text-color">
         <span className="text-h3">Bandage</span>

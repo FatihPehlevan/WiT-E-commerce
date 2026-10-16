@@ -45,3 +45,10 @@ export const footerContent = [
     ],
   },
 ];
+
+export const editorsPickM = [
+  { src: '/assets/ep_men_mobile.png', tag: 'MEN' },
+  { src: '/assets/ep_women_mobile.png', tag: 'WOMEN' },
+  { src: '/assets/ep_accs_mobile.png', tag: 'ACCESSORIES' },
+  { src: '/assets/ep_kids_mobile.png', tag: 'KIDS' },
+];
