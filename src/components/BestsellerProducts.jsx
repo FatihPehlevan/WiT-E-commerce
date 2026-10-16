@@ -2,7 +2,7 @@ import { productsM } from '@/data/data';
 import ProductCard from '@/components/ProductCard';
 export default function BestsellerProducts() {
   return (
-    <div className="pt-20 px-10">
+    <section className="pt-20 px-10">
       <div className="flex flex-col gap-2.5 text-center pb-12">
         <h4 className="text-h4 text-second-text-color">Featured Products</h4>
         <h3 className="text-h3 text-text-color">
@@ -18,6 +18,6 @@ export default function BestsellerProducts() {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }

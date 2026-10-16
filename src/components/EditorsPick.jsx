@@ -2,7 +2,7 @@ import { editorsPickM } from '@/data/data';
 
 export default function EditorsPick() {
   return (
-    <div className="bg-[#fafafa] py-20">
+    <section className="bg-[#fafafa] py-20">
       <div className="flex flex-col px-10 items-center">
         <h3 className="text-h3 text-text-color pb-2.5">EDITOR'S PICK</h3>
         <p className="text-paragraph text-second-text-color text-center">
@@ -22,6 +22,6 @@ export default function EditorsPick() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

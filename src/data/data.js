@@ -127,3 +127,36 @@ export const productsM = [
     colors: ['primary', 'secondary', 'alert', 'dark'],
   },
 ];
+
+export const posts = [
+  {
+    id: 1,
+    src: '/assets/posts/post_1.png',
+    tags: ['Google', 'Trending', 'New'],
+    title: "Loudest à la Madison #1 (L'integral)",
+    summary:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: '22 April 2021',
+    commentsNumber: 10,
+  },
+  {
+    id: 2,
+    src: '/assets/posts/post_2.png',
+    tags: ['Google', 'Trending', 'New'],
+    title: "Loudest à la Madison #1 (L'integral)",
+    summary:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: '22 April 2021',
+    commentsNumber: 10,
+  },
+  {
+    id: 3,
+    src: '/assets/posts/post_3.png',
+    tags: ['Google', 'Trending', 'New'],
+    title: "Loudest à la Madison #1 (L'integral)",
+    summary:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: '22 April 2021',
+    commentsNumber: 10,
+  },
+];
