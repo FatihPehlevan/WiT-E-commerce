@@ -1,3 +1,4 @@
+import BestsellerProducts from '@/components/BestsellerProducts';
 import EditorsPick from '@/components/EditorsPick';
 
 export default function HomePage() {
@@ -6,8 +7,8 @@ export default function HomePage() {
       <div className="">Hero section</div>
 
       <EditorsPick />
+      <BestsellerProducts />
 
-      <div className="">Bestseller Products</div>
       <div className="">Slider section</div>
       <div className="">Part of the Neural Universe</div>
       <div className="">Featured Posts</div>
