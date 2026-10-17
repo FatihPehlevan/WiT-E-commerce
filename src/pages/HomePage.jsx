@@ -1,7 +1,10 @@
 import BestsellerProducts from '@/components/BestsellerProducts';
+import Carousel from '@/components/Carousel';
+import ClassicProductSlide from '@/components/ClassicProductSlide';
 import EditorsPick from '@/components/EditorsPick';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import PartOfTheNeuralUniverse from '@/components/PartOfTheNeuralUniverse';
+import { classicProductsM } from '@/data/data';
 
 export default function HomePage() {
   return (
@@ -11,7 +14,11 @@ export default function HomePage() {
       <EditorsPick />
       <BestsellerProducts />
 
-      <div className="">Slider section</div>
+      <Carousel>
+        {classicProductsM.map((product) => (
+          <ClassicProductSlide key={product.id} product={product} />
+        ))}
+      </Carousel>
 
       <PartOfTheNeuralUniverse />
 

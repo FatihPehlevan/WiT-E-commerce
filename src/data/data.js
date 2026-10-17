@@ -160,3 +160,36 @@ export const posts = [
     commentsNumber: 10,
   },
 ];
+
+export const classicProductsM = [
+  {
+    id: 1,
+    color: 'green',
+    btnColor: 'lightGreen',
+    topTitle: 'SUMMER 2020',
+    title: 'Vita Classic Product',
+    summary: 'We know how large objects will act, but things on a small scale.',
+    price: 16.48,
+    imgSrc: '/assets/classic_products.png',
+  },
+  {
+    id: 2,
+    color: 'orange',
+    btnColor: 'lightOrange',
+    topTitle: 'SUMMER 2020',
+    title: 'Vita Classic Product',
+    summary: 'We know how large objects will act, but things on a small scale.',
+    price: 13.5,
+    imgSrc: '/assets/classic_products.png',
+  },
+  {
+    id: 3,
+    color: 'blue',
+    btnColor: 'lightBlue',
+    topTitle: 'SUMMER 2020',
+    title: 'Vita Classic Product',
+    summary: 'We know how large objects will act, but things on a small scale.',
+    price: 26.74,
+    imgSrc: '/assets/classic_products.png',
+  },
+];
