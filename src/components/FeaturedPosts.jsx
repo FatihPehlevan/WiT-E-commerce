@@ -8,7 +8,7 @@ export default function FeaturedPosts() {
         <div className="flex flex-col gap-2.5 items-center">
           <h6 className="text-h6 text-primary-text-color">Practice Advice</h6>
           <h2 className="text-h2 text-text-color text-center">
-            Featured Products
+            Featured <br /> Posts
           </h2>
           <p className="text-paragraph text-second-text-color text-center w-60 pb-20">
             Problems trying to resolve the conflict between the two major

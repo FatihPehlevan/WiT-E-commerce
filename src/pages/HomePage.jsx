@@ -1,6 +1,7 @@
 import BestsellerProducts from '@/components/BestsellerProducts';
 import EditorsPick from '@/components/EditorsPick';
 import FeaturedPosts from '@/components/FeaturedPosts';
+import PartOfTheNeuralUniverse from '@/components/PartOfTheNeuralUniverse';
 
 export default function HomePage() {
   return (
@@ -11,7 +12,8 @@ export default function HomePage() {
       <BestsellerProducts />
 
       <div className="">Slider section</div>
-      <div className="">Part of the Neural Universe</div>
+
+      <PartOfTheNeuralUniverse />
 
       <FeaturedPosts />
     </main>
