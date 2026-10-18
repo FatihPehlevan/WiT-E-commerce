@@ -2,7 +2,12 @@ export default function Post({ post }) {
   const { src, tags, title, summary, date, commentsNumber } = post;
   return (
     <div className="flex flex-col shadow-md">
-      <img src={src} alt="" />
+      <div className="relative">
+        <img src={src} alt="" />
+        <h6 className="text-h6 text-light-text-color absolute top-5 left-5 bg-danger-color py-1 px-3 rounded-md">
+          NEW
+        </h6>
+      </div>
       <div className="flex flex-col gap-2.5 px-6 pt-6 pb-9">
         <div className="flex gap-4 ">
           {tags.map((tag) => (

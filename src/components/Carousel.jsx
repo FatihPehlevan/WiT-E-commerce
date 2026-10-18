@@ -13,7 +13,7 @@ export default function Carousel({ children, chevronClass }) {
           {children}
         </div>
         <div
-          // if you want to manipulate chevron position based on slide needs, you can send a prop from where carousel is used and use that value here. ex. "top-[600px]"
+          // if you want to manipulate chevrons' position based on slide needs, you can send a prop and use that value here. ex. "top-[600px]"
           className={`absolute ${chevronClass ?? 'top-1/2 -translate-y-1/2'} left-0 w-full`}
         >
           <div className="flex justify-between px-3">

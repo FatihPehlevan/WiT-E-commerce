@@ -13,7 +13,7 @@ export default function ClassicProductSlide({ product }) {
     <div
       className={`${colorClasses[color]} flex flex-col  pt-52 flex-[0_0_100%] min-w-0`}
     >
-      <div className="flex flex-col gap-9 text-center items-center text-light-text-color px-10">
+      <div className="flex flex-col gap-9 text-center items-center text-light-text-color px-10 ">
         <h4 className="text-h4">{topTitle}</h4>
         <h2 className="text-h2">{title}</h2>
         <p className="text-h4 w-71.75">{summary}</p>
@@ -24,7 +24,9 @@ export default function ClassicProductSlide({ product }) {
       >
         ADD TO CART
       </button>
-      <img src={imgSrc} alt="" />
+      <div className="h-142 overflow-hidden">
+        <img src={imgSrc} alt="" />
+      </div>
     </div>
   );
 }
