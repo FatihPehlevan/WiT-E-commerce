@@ -179,7 +179,7 @@ export const classicProductsM = [
     topTitle: 'SUMMER 2020',
     title: 'Vita Classic Product',
     summary: 'We know how large objects will act, but things on a small scale.',
-    price: 13.5,
+    price: 13.51,
     imgSrc: '/assets/classic_products.png',
   },
   {
@@ -191,5 +191,29 @@ export const classicProductsM = [
     summary: 'We know how large objects will act, but things on a small scale.',
     price: 26.74,
     imgSrc: '/assets/classic_products.png',
+  },
+];
+
+export const heroSlidesM = [
+  {
+    id: 1,
+    imgSrc: '/assets/hero/heroM.jpg',
+    title: 'NEW COLLECTION',
+    topTitle: 'SUMMER 2020',
+    summary: 'We know how large objects will act, but things on a small scale.',
+  },
+  {
+    id: 2,
+    imgSrc: '/assets/hero/heroM.jpg',
+    title: 'NEWER COLLECTION',
+    topTitle: 'SUMMER 2020',
+    summary: 'We know how large objects will act, but things on a small scale.',
+  },
+  {
+    id: 3,
+    imgSrc: '/assets/hero/heroM.jpg',
+    title: 'THE NEWEST COLLECTION',
+    topTitle: 'SUMMER 2020',
+    summary: 'We know how large objects will act, but things on a small scale.',
   },
 ];

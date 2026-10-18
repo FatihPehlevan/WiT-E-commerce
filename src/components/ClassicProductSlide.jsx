@@ -20,7 +20,7 @@ export default function ClassicProductSlide({ product }) {
         <span className="text-h3 ">${price}</span>
       </div>
       <button
-        className={`${colorClasses[btnColor]} text-btn-text text-light-text-color px-10 py-3.75 mt-5 mb-7.5 w-max rounded-md mx-auto`}
+        className={`${colorClasses[btnColor]} text-btn-text text-light-text-color px-10 py-3.75 mt-5 mb-7.5 w-max rounded-md mx-auto cursor-pointer`}
       >
         ADD TO CART
       </button>

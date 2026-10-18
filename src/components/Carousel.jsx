@@ -1,6 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 
-export default function Carousel({ children }) {
+export default function Carousel({ children, chevronClass }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   const scrollPrev = () => emblaApi?.scrollPrev();
@@ -12,8 +12,11 @@ export default function Carousel({ children }) {
         <div className="embla__container flex touch-pan-y touch-pinch-zoom">
           {children}
         </div>
-        <div className="absolute top-[45.7%] left-0 w-full">
-          <div className="flex justify-between px-6">
+        <div
+          // if you want to manipulate chevron position based on slide needs, you can send a prop from where carousel is used and use that value here. ex. "top-[600px]"
+          className={`absolute ${chevronClass ?? 'top-1/2 -translate-y-1/2'} left-0 w-full`}
+        >
+          <div className="flex justify-between px-3">
             <button className="embla__prev" onClick={scrollPrev}>
               <i className="iconify-[akar-icons--chevron-left] size-14 text-light-text-color"></i>
             </button>
