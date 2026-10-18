@@ -1,6 +1,6 @@
 export const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '/shop', label: 'Shop' },
+  { to: '/shop', label: 'Shop', hasDropdown: true },
   { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
