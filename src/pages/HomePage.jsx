@@ -9,7 +9,7 @@ import HeroSlide from '@/components/HeroSlide';
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col pt-5">
+    <main className="flex flex-col">
       <Carousel>
         {heroSlidesM.map((slide) => (
           <HeroSlide key={slide.id} slide={slide} />
