@@ -194,24 +194,27 @@ export const classicProductsM = [
   },
 ];
 
-export const heroSlidesM = [
+export const heroSlides = [
   {
     id: 1,
-    imgSrc: '/assets/hero/heroM.jpg',
+    imgSrcM: '/assets/hero/heroM.jpg',
+    imgSrcD: '/assets/hero/heroD.jpg',
     title: 'NEW COLLECTION',
     topTitle: 'SUMMER 2020',
     summary: 'We know how large objects will act, but things on a small scale.',
   },
   {
     id: 2,
-    imgSrc: '/assets/hero/heroM.jpg',
+    imgSrcM: '/assets/hero/heroM.jpg',
+    imgSrcD: '/assets/hero/heroD.jpg',
     title: 'NEWER COLLECTION',
     topTitle: 'SUMMER 2020',
     summary: 'We know how large objects will act, but things on a small scale.',
   },
   {
     id: 3,
-    imgSrc: '/assets/hero/heroM.jpg',
+    imgSrcM: '/assets/hero/heroM.jpg',
+    imgSrcD: '/assets/hero/heroD.jpg',
     title: 'THE NEWEST COLLECTION',
     topTitle: 'SUMMER 2020',
     summary: 'We know how large objects will act, but things on a small scale.',

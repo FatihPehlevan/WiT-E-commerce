@@ -4,14 +4,14 @@ import ClassicProductSlide from '@/components/ClassicProductSlide';
 import EditorsPick from '@/components/EditorsPick';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import PartOfTheNeuralUniverse from '@/components/PartOfTheNeuralUniverse';
-import { classicProductsM, heroSlidesM } from '@/data/data';
+import { classicProductsM, heroSlides } from '@/data/data';
 import HeroSlide from '@/components/HeroSlide';
 
 export default function HomePage() {
   return (
     <main className="flex flex-col">
       <Carousel>
-        {heroSlidesM.map((slide) => (
+        {heroSlides.map((slide) => (
           <HeroSlide key={slide.id} slide={slide} />
         ))}
       </Carousel>
