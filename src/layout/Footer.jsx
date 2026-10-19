@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 export default function Footer() {
   return (
     <footer className="flex flex-col gap-18">
-      <div className="bg-light-gray-1">
-        <div className="flex flex-col gap-6 p-10 lg:flex-row lg:justify-between lg:items-center lg:max-w-275 lg:mx-auto lg:px-0 lg:py-10">
+      <div className="">
+        <div className="flex flex-col gap-6 py-10 mx-10 lg:flex-row lg:justify-between lg:items-center lg:max-w-275 lg:mx-auto  border-b-2 border-[#e5e5e5]">
           <h3 className="text-h3 text-text-color">Bandage</h3>
           <div className="flex gap-5 text-primary-color">
             <i className="iconify-[akar-icons--facebook-fill] size-6"></i>
