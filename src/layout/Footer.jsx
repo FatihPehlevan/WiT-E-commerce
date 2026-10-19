@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="flex flex-col gap-18">
       <div className="bg-light-gray-1">
-        <div className="flex flex-col gap-6 p-10 lg:flex-row lg:justify-between lg:items-center lg:max-w-360 lg:mx-auto lg:px-47">
+        <div className="flex flex-col gap-6 p-10 lg:flex-row lg:justify-between lg:items-center lg:max-w-275 lg:mx-auto lg:px-0 lg:py-10">
           <h3 className="text-h3 text-text-color">Bandage</h3>
           <div className="flex gap-5 text-primary-color">
             <i className="iconify-[akar-icons--facebook-fill] size-6"></i>
@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-7.5 px-10 lg:flex-row lg:items-start lg:px-47 lg:max-w-360 lg:w-full lg:mx-auto lg:justify-between">
+      <div className="flex flex-col gap-7.5 px-10 lg:flex-row lg:items-start lg:max-w-275 lg:px-0 lg:w-full lg:mx-auto lg:justify-between">
         {footerContent.map((content, index) => (
           <div key={index} className="flex flex-col">
             <h5 className="text-h5 text-text-color pb-5">{content.title}</h5>
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-light-gray-1 py-6 ">
-        <h6 className="text-h6 text-second-text-color text-center lg:text-left lg:max-w-360 lg:mx-auto lg:px-47">
+        <h6 className="text-h6 text-second-text-color text-center lg:text-left lg:max-w-275 lg:mx-auto">
           Made with Love by <br className="lg:hidden" /> Finland All Rights
           Reserved
         </h6>

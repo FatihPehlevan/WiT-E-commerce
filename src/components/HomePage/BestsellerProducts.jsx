@@ -1,5 +1,5 @@
 import { productsM } from '@/data/data';
-import ProductCard from '@/components/ProductCard';
+import ProductCard from '@/components/HomePage/ProductCard';
 export default function BestsellerProducts() {
   return (
     <section className="pt-20 px-10">

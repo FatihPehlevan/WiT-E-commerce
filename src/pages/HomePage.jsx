@@ -1,11 +1,11 @@
-import BestsellerProducts from '@/components/BestsellerProducts';
-import Carousel from '@/components/Carousel';
-import ClassicProductSlide from '@/components/ClassicProductSlide';
-import EditorsPick from '@/components/EditorsPick';
-import FeaturedPosts from '@/components/FeaturedPosts';
-import PartOfTheNeuralUniverse from '@/components/PartOfTheNeuralUniverse';
+import BestsellerProducts from '@/components/HomePage/BestsellerProducts';
+import Carousel from '@/components/HomePage/Carousel';
+import ClassicProductSlide from '@/components/HomePage/ClassicProductSlide';
+import EditorsPick from '@/components/HomePage/EditorsPick';
+import FeaturedPosts from '@/components/HomePage/FeaturedPosts';
+import PartOfTheNeuralUniverse from '@/components/HomePage/PartOfTheNeuralUniverse';
 import { classicProductsM, heroSlides } from '@/data/data';
-import HeroSlide from '@/components/HeroSlide';
+import HeroSlide from '@/components/HomePage/HeroSlide';
 
 export default function HomePage() {
   return (

@@ -224,3 +224,36 @@ export const heroSlides = [
     summary: 'We know how large objects will act, but things on a small scale.',
   },
 ];
+
+export const shopCategories = [
+  {
+    id: 1,
+    name: 'CLOTHS',
+    imgSrc: '/assets/ShopCategories/category-1.png',
+    piece: 5,
+  },
+  {
+    id: 2,
+    name: 'CLOTHS',
+    imgSrc: '/assets/ShopCategories/category-2.png',
+    piece: 8,
+  },
+  {
+    id: 3,
+    name: 'CLOTHS',
+    imgSrc: '/assets/ShopCategories/category-3.png',
+    piece: 12,
+  },
+  {
+    id: 4,
+    name: 'CLOTHS',
+    imgSrc: '/assets/ShopCategories/category-4.png',
+    piece: 7,
+  },
+  {
+    id: 5,
+    name: 'CLOTHS',
+    imgSrc: '/assets/ShopCategories/category-5.png',
+    piece: 9,
+  },
+];
