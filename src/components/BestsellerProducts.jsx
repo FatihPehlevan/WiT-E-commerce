@@ -14,7 +14,7 @@ export default function BestsellerProducts() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-7.5 items-center lg:flex-row lg:flex-wrap lg:justify-center lg:px-40 lg:pb-20">
+      <div className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-[repeat(4,240px)] lg:justify-center lg:pb-20 lg:gap-y-20">
         {productsM.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
