@@ -3,7 +3,7 @@ export default function Post({ post }) {
   return (
     <div className="flex flex-col shadow-md">
       <div className="relative">
-        <img src={src} alt="" />
+        <img src={src} alt="" className="w-full" />
         <h6 className="text-h6 text-light-text-color absolute top-5 left-5 bg-danger-color py-1 px-3 rounded-md">
           NEW
         </h6>
@@ -18,8 +18,8 @@ export default function Post({ post }) {
         </div>
         <h4 className="text-h4 text-text-color">{title}</h4>
         <p className="text-paragraph text-second-text-color">{summary}</p>
-        <div className="flex justify-between text-small text-second-text-color pt-4">
-          <span className="flex item-center gap-1.25">
+        <div className="flex justify-between text-small text-second-text-color pt-4 ">
+          <span className="flex items-center gap-1.25">
             <i className="iconify-[boxicons--alarm] text-primary-text-color size-4"></i>
             {date}
           </span>

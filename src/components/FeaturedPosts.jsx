@@ -16,7 +16,7 @@ export default function FeaturedPosts() {
             Classical physics: Newtonian mechanics.
           </p>
         </div>
-        <div className="flex flex-col gap-7.5">
+        <div className="flex flex-col gap-7.5 lg:flex-row lg:gap-2.5 lg:px-47 lg:max-w-360">
           {posts.map((post) => (
             <Post key={post.id} post={post} />
           ))}
