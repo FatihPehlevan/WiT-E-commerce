@@ -6,7 +6,8 @@ export default function EditorsPick() {
       <div className="flex flex-col px-10 items-center">
         <h3 className="text-h3 text-text-color pb-2.5">EDITOR'S PICK</h3>
         <p className="text-paragraph text-second-text-color text-center">
-          Problems trying to resolve <br /> the conflict between
+          Problems trying to resolve <br className="lg:hidden" /> the conflict
+          between
         </p>
         <div className="flex flex-col pt-12">
           {editorsPickM.map((pick) => (
