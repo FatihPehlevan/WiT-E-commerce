@@ -1,6 +1,6 @@
 export default function CategoryFilters() {
   return (
-    <div className="flex flex-col items-center bg-white gap-6 py-6 lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto">
+    <div className="flex flex-col items-center bg-white gap-6 py-6 lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto lg:pt-12 lg:pb-0">
       <span className="text-h6 text-second-text-color">
         Showing all 12 results
       </span>
