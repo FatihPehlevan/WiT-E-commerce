@@ -6,14 +6,15 @@ export default function BestsellerProducts() {
       <div className="flex flex-col gap-2.5 text-center pb-12">
         <h4 className="text-h4 text-second-text-color">Featured Products</h4>
         <h3 className="text-h3 text-text-color">
-          BESTSELLER <br /> PRODUCTS
+          BESTSELLER <br className="lg:hidden" /> PRODUCTS
         </h3>
         <p className="text-paragraph text-second-text-color">
-          Problems trying to resolve the <br /> conflict between
+          Problems trying to resolve the <br className="lg:hidden" /> conflict
+          between
         </p>
       </div>
 
-      <div className="flex flex-col gap-7.5 items-center">
+      <div className="flex flex-col gap-7.5 items-center lg:flex-row lg:flex-wrap lg:justify-center lg:px-40 lg:pb-20">
         {productsM.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
