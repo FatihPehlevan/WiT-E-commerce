@@ -47,7 +47,11 @@ export const footerContent = [
 ];
 
 export const editorsPickM = [
-  { src: '/assets/EditorsPick/ep_men_mobile.png', tag: 'MEN' },
+  {
+    src: '/assets/EditorsPick/ep_men_mobile.png',
+    desktopSrc: '/assets/EditorsPick/ep_men_desktop.png',
+    tag: 'MEN',
+  },
   { src: '/assets/EditorsPick/ep_women_mobile.png', tag: 'WOMEN' },
   { src: '/assets/EditorsPick/ep_accs_mobile.png', tag: 'ACCESSORIES' },
   { src: '/assets/EditorsPick/ep_kids_mobile.png', tag: 'KIDS' },
