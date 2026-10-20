@@ -1,6 +1,6 @@
 import Brands from '@/components/ShopPage/Brands';
 import ProductCard from '@/components/HomePage/ProductCard';
-import { productsM, singleProduct } from '@/data/data';
+import { productsM } from '@/data/data';
 import ProductSummary from '@/components/ProductDetailsPage/ProductSummary';
 import ProductSpecs from '@/components/ProductDetailsPage/ProductSpecs';
 import InnerHeader from '@/components/Header/InnerHeader';
@@ -9,7 +9,7 @@ export default function ProductDetailsPage() {
   return (
     <section>
       <InnerHeader title="Product Details" />
-      <ProductSummary product={singleProduct} />
+      <ProductSummary />
       <ProductSpecs />
       {/* Bestseller Products Section */}
       <div className="py-12 bg-light-gray-1">

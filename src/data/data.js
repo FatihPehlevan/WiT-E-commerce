@@ -265,7 +265,7 @@ export const singleProduct = {
   ],
   title: 'Floating Phone',
   rating: 4.74,
-  reviewCount: 10,
+  reviewCount: 4,
   price: '1,139.33',
   availability: 'In Stock',
   summary:
