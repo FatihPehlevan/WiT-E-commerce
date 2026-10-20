@@ -1,11 +1,18 @@
 import Brands from '@/components/ShopPage/Brands';
 import ProductCard from '@/components/HomePage/ProductCard';
-import { productsM } from '@/data/data';
+import { productsM, singleProduct } from '@/data/data';
+import ProductSummary from '@/components/ProductDetailsPage/ProductSummary';
+import ProductSpecs from '@/components/ProductDetailsPage/ProductSpecs';
+import InnerHeader from '@/components/Header/InnerHeader';
 
 export default function ProductDetailsPage() {
   return (
     <section>
-      <div className="py-12 bg-[#fafafa]">
+      <InnerHeader title="Product Details" />
+      <ProductSummary product={singleProduct} />
+      <ProductSpecs />
+      {/* Bestseller Products Section */}
+      <div className="py-12 bg-light-gray-1">
         <h3 className="text-h3 text-text-color pb-12 text-center">
           BESTSELLER PRODUCTS
         </h3>

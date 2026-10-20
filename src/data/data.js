@@ -257,3 +257,28 @@ export const shopCategories = [
     piece: 9,
   },
 ];
+
+export const singleProduct = {
+  imgSrcs: [
+    '/assets/single_product/main.jpg',
+    '/assets/single_product/alt1.jpg',
+  ],
+  title: 'Floating Phone',
+  rating: 4.74,
+  reviewCount: 10,
+  price: '1,139.33',
+  availability: 'In Stock',
+  summary:
+    'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
+  colors: ['primary', 'secondary', 'alert', 'dark'],
+  description:
+    'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met. Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met. Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
+  additionalInfo:
+    'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
+  reviews: [
+    'Great product!',
+    'Very satisfied with the quality.',
+    'Haram olsun',
+    'Would buy again.',
+  ],
+};
