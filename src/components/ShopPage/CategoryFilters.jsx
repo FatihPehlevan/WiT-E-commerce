@@ -18,7 +18,7 @@ export default function CategoryFilters() {
           <span className="text-form text-second-text-color">Popularity</span>
           <i className="iconify-[akar-icons--chevron-down]"></i>
         </div>
-        <button className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md">
+        <button className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md cursor-pointer">
           Filter
         </button>
       </div>
