@@ -1,7 +1,7 @@
 import React from 'react';
 export function ProductSpecsHeader({ activeTab, setActiveTab, reviewCount }) {
   return (
-    <div className="flex flex-col gap-2.5 justify-between text-link text-second-text-color lg:flex-row">
+    <div className="flex flex-col gap-2.5 justify-between text-link text-second-text-color lg:w-full lg:flex-row lg:max-w-275 lg:mx-auto">
       <button
         className={` ${activeTab === 'description' ? 'text-text-color underline underline-offset-2' : ''}`}
         onClick={() => setActiveTab('description')}
@@ -12,7 +12,7 @@ export function ProductSpecsHeader({ activeTab, setActiveTab, reviewCount }) {
         className={` ${activeTab === 'additionalInfo' ? 'text-text-color underline underline-offset-2' : ''}`}
         onClick={() => setActiveTab('additionalInfo')}
       >
-        Additional Info.
+        Additional Information
       </button>
       <button
         className={` ${activeTab === 'reviews' ? 'text-text-color underline underline-offset-2' : ''}`}

@@ -15,12 +15,20 @@ export default function ProductSpecs() {
         setActiveTab={setActiveTab}
         reviewCount={reviewCount}
       />
-      <img src="/assets/single_product/alt1.jpg" alt="" />
-      {activeTab === 'description' && <Description description={description} />}
-      {activeTab === 'additionalInfo' && (
-        <AdditionalInfo additionalInfo={additionalInfo} />
-      )}
-      {activeTab === 'reviews' && <Reviews reviews={reviews} />}
+      <div className="flex flex-col gap-10 lg:flex-row lg:max-w-275 lg:w-full lg:mx-auto">
+        <img
+          src="/assets/single_product/alt1.jpg"
+          alt=""
+          className="lg:w-1/2 lg:shrink-0"
+        />
+        {activeTab === 'description' && (
+          <Description description={description} />
+        )}
+        {activeTab === 'additionalInfo' && (
+          <AdditionalInfo additionalInfo={additionalInfo} />
+        )}
+        {activeTab === 'reviews' && <Reviews reviews={reviews} />}
+      </div>
     </div>
   );
 }
