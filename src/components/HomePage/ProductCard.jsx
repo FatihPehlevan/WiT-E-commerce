@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 const colorClasses = {
   primary: 'bg-primary-color',
   secondary: 'bg-secondary-color-1',
@@ -6,9 +7,9 @@ const colorClasses = {
 };
 
 export default function ProductCard({ product }) {
-  const { src, title, subTitle, price, salePrice, colors } = product;
+  const { id, src, title, subTitle, price, salePrice, colors } = product;
   return (
-    <div className="flex flex-col gap-2.5 items-center">
+    <Link to={`/product/${id}`} className="flex flex-col gap-2.5 items-center">
       <img src={src} alt="" />
       {/* className="lg:w-60 lg:h-106.75 lg:object-cover" */}
       <h5 className="text-h5 text-text-color pt-6">{title}</h5>
@@ -25,6 +26,6 @@ export default function ProductCard({ product }) {
           ></div>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }
