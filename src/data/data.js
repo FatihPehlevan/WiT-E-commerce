@@ -282,3 +282,36 @@ export const singleProduct = {
     'Would buy again.',
   ],
 };
+
+export const teamMembers = [
+  {
+    id: 1,
+    image: '/assets/team/project_manager.jpg',
+    name: 'Yalçın Çetinkaya',
+    profession: 'Project Manager',
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+    twitter: 'https://twitter.com',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    id: 2,
+    image: '/assets/team/fs_developer.jpeg',
+    name: 'Fatih Pehlevan',
+    profession: 'Full Stack Developer',
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+    twitter: 'https://twitter.com',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    id: 3,
+    image: '/assets/team/advisor.png',
+    name: 'Mark Zuckerberg',
+    profession: 'Advisor',
+    facebook: 'https://facebook.com',
+    instagram: 'https://instagram.com',
+    twitter: 'https://twitter.com',
+    linkedin: 'https://linkedin.com',
+  },
+];

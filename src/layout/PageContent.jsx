@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router';
+import TeamPage from '@/pages/TeamPage';
 import HomePage from '@/pages/HomePage';
 import ShopPage from '@/pages/ShopPage';
 import ProductDetailsPage from '@/pages/ProductDetailsPage';
@@ -11,6 +12,7 @@ export default function PageContent() {
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/product/:id" element={<ProductDetailsPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/team" element={<TeamPage />} />
     </Routes>
   );
 }
