@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 export default function Topbar() {
   return (
     <div className="hidden lg:flex justify-between bg-dark-background-color text-light-text-color py-5 text-h6 px-9">
@@ -14,10 +16,18 @@ export default function Topbar() {
       <span>Follow us and get a chance to win 80% off!</span>
       <div className="flex items-center gap-4">
         <span>Follow Us :</span>
-        <i className="iconify-[akar-icons--facebook-fill] size-4"></i>
-        <i className="iconify-[akar-icons--youtube-fill] size-4"></i>
-        <i className="iconify-[akar-icons--instagram-fill] size-4"></i>
-        <i className="iconify-[akar-icons--twitter-fill] size-4"></i>
+        <Link className="cursor-pointer">
+          <i className="iconify-[akar-icons--facebook-fill] size-4"></i>
+        </Link>
+        <Link className="cursor-pointer">
+          <i className="iconify-[akar-icons--youtube-fill] size-4"></i>
+        </Link>
+        <Link className="cursor-pointer">
+          <i className="iconify-[akar-icons--instagram-fill] size-4"></i>
+        </Link>
+        <Link className="cursor-pointer">
+          <i className="iconify-[akar-icons--twitter-fill] size-4"></i>
+        </Link>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import Post from './Post';
 
 export default function FeaturedPosts() {
   return (
-    <section className="py-20 px-10">
-      <div className="flex flex-col items-center">
+    <section className="py-20 px-10 ">
+      <div className="flex flex-col items-center ">
         <div className="flex flex-col gap-2.5 items-center">
           <h6 className="text-h6 text-primary-text-color">Practice Advice</h6>
           <h2 className="text-h2 text-text-color text-center">
@@ -16,7 +16,7 @@ export default function FeaturedPosts() {
             Classical physics: Newtonian mechanics.
           </p>
         </div>
-        <div className="flex flex-col gap-7.5 lg:flex-row lg:gap-2.5 lg:px-47 lg:max-w-360">
+        <div className="flex flex-col gap-7.5 lg:justify-between lg:items-center lg:flex-row lg:max-w-275 lg:mx-auto lg:w-full">
           {posts.map((post) => (
             <Post key={post.id} post={post} />
           ))}
