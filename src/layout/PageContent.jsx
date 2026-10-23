@@ -4,6 +4,7 @@ import HomePage from '@/pages/HomePage';
 import ShopPage from '@/pages/ShopPage';
 import ProductDetailsPage from '@/pages/ProductDetailsPage';
 import ContactPage from '@/pages/ContactPage';
+import AboutUsPage from '@/pages/AboutUsPage';
 
 export default function PageContent() {
   return (
@@ -13,6 +14,7 @@ export default function PageContent() {
       <Route path="/product/:id" element={<ProductDetailsPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/team" element={<TeamPage />} />
+      <Route path="/about" element={<AboutUsPage />} />
     </Routes>
   );
 }

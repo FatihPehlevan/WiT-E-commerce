@@ -308,10 +308,17 @@ export const teamMembers = [
     id: 3,
     image: '/assets/team/advisor.png',
     name: 'Mark Zuckerberg',
-    profession: 'Advisor',
+    profession: 'Intern',
     facebook: 'https://facebook.com',
     instagram: 'https://instagram.com',
     twitter: 'https://twitter.com',
     linkedin: 'https://linkedin.com',
   },
+];
+
+export const statistics = [
+  { id: 1, value: 15100, label: 'Happy Customers' },
+  { id: 2, value: 150000, label: 'Monthly Visitors' },
+  { id: 3, value: 15, label: 'Countries Worldwide' },
+  { id: 4, value: 100, label: 'Top Partners', suffix: '+' },
 ];
