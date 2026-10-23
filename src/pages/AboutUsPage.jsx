@@ -33,27 +33,40 @@ export default function AboutUsPage() {
       <TeamPage />
       <div className="flex flex-col gap-10 bg-light-text-gray-1 px-10 items-center text-center pt-20">
         <h2 className="text-text-color text-h2">Big Companies Are Here</h2>
-        <p className="text-paragraph text-second-text-color">
+        <p className="text-paragraph text-second-text-color lg:w-120">
           Problems trying to resolve the conflict between the two major realms
           of Classical physics: Newtonian mechanics{' '}
         </p>
       </div>
       <Brands />
-      <img
-        src="assets/about_us/video_thumb_mobile.png"
-        alt=""
-        className="px-10 py-20"
-      />
-      <div className="flex flex-col gap-6 bg-hover-color text-light-text-color px-10 py-20 items-center text-center">
-        <h5 className="text-h5">WORK WITH US</h5>
-        <h2 className="text-h2">Now Let's Grow Yours</h2>
-        <p className="text-paragraph">
-          The gradual accumulation of information about atomic and small-scale
-          behavior during the first quarter of the 20th{' '}
-        </p>
-        <button className="border border-white text-btn-text px-10 py-4 rounded-md">
-          Button
-        </button>
+      <picture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet="assets/about_us/video_thumb_desktop.png"
+        />
+        <img
+          src="assets/about_us/video_thumb_mobile.png"
+          alt=""
+          className="px-10 py-20 lg:mx-auto lg:max-w-275 lg:w-full"
+        />
+      </picture>
+      <div className="flex flex-col bg-hover-color text-light-text-color px-10 py-20  text-center lg:text-left lg:flex-row lg:p-0 lg:justify-between">
+        <div className="flex flex-col gap-6 items-center lg:self-center lg:items-start lg:ml-[calc((100%-1100px)/2)]">
+          <h5 className="text-h5">WORK WITH US</h5>
+          <h2 className="text-h2">Now Let's Grow Yours</h2>
+          <p className="text-paragraph lg:w-120">
+            The gradual accumulation of information about atomic and small-scale
+            behavior during the first quarter of the 20th{' '}
+          </p>
+          <button className="border border-white text-btn-text px-10 py-4 rounded-md">
+            Button
+          </button>
+        </div>
+        <img
+          src="/assets/about_us/lets_grow_yours_image.png"
+          alt=""
+          className="hidden lg:block"
+        />
       </div>
     </section>
   );
