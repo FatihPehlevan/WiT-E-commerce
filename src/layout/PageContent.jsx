@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router';
-import TeamPage from '@/pages/TeamPage';
 import HomePage from '@/pages/HomePage';
 import ShopPage from '@/pages/ShopPage';
 import ProductDetailsPage from '@/pages/ProductDetailsPage';
 import ContactPage from '@/pages/ContactPage';
 import AboutUsPage from '@/pages/AboutUsPage';
+import SignUpPage from '@/pages/SignUpPage';
 
 export default function PageContent() {
   return (
@@ -13,8 +13,8 @@ export default function PageContent() {
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/product/:id" element={<ProductDetailsPage />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/team" element={<TeamPage />} />
       <Route path="/about" element={<AboutUsPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
     </Routes>
   );
 }

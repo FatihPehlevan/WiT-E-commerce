@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 export default function LoginRegister() {
   return (
     <div className="flex justify-center gap-2">
@@ -5,7 +7,7 @@ export default function LoginRegister() {
         <i className="iconify-[boxicons--user]"></i>Login
       </button>
       <span>/</span>
-      <button>Register</button>
+      <Link to="/signup">Register</Link>
     </div>
   );
 }
