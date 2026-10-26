@@ -116,3 +116,10 @@
   --shadow-dramatic: -31px -22px 19px 0px rgba(0, 0, 0, 0);
   --shadow-light: 0px 2px 4px 0px rgba(0, 0, 0, 0);
 }
+
+@layer components {
+  .form-field {
+    @apply border border-input-border px-5 py-2.5 rounded-md bg-form-bg
+      text-second-text-color text-form placeholder:text-second-text-color;
+  }
+}

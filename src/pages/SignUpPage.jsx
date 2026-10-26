@@ -1,15 +1,24 @@
 import { useForm } from 'react-hook-form';
 import { getRoles } from '@/api/api';
 import { useQuery } from '@tanstack/react-query';
+import BouncingDots from '@/components/SignUpPage/BouncingDots';
+import FieldError from '@/components/SignUpPage/FieldError';
 
 export default function SignUpPage() {
   const {
     register,
     getValues,
+    watch,
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm({ defaultValues: { role: '3' }, mode: 'onChange' });
+  } = useForm({
+    defaultValues: { role_id: '3' },
+    mode: 'onChange',
+    shouldUnregister: true,
+  });
+
+  const selectedRole = watch('role_id');
 
   const { data, isPending, error } = useQuery({
     queryKey: ['roles'],
@@ -23,7 +32,10 @@ export default function SignUpPage() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-4 px-10 py-10 lg:w-1/4 lg:mx-auto">
+      <h2 className="text-h2 text-text-color text-center pt-10 pb-5">
+        Create Your Account
+      </h2>
+      <div className="flex flex-col gap-4 px-10 py-4 lg:w-1/4 lg:mx-auto">
         <input
           {...register('name', {
             required: 'Please enter your name.',
@@ -32,12 +44,10 @@ export default function SignUpPage() {
               message: 'Name must be at least 3 characters long.',
             },
           })}
-          className="border border-input-border px-5 py-2.5 rounded-md bg-form-bg placeholder:text-second-text-color text-second-text-color text-form"
+          className="form-field"
           placeholder="Name"
         />
-        {errors.name && (
-          <p className="text-alert-color text-small">{errors.name.message}</p>
-        )}
+        <FieldError message={errors.name?.message} />
         <input
           type="email"
           {...register('email', {
@@ -47,12 +57,10 @@ export default function SignUpPage() {
               message: 'Please enter a valid email address',
             },
           })}
-          className="border border-input-border px-5 py-2.5 rounded-md bg-form-bg placeholder:text-second-text-color text-second-text-color text-form"
+          className="form-field"
           placeholder="Email"
         />
-        {errors.email && (
-          <p className="text-alert-color text-small">{errors.email.message}</p>
-        )}
+        <FieldError message={errors.email?.message} />
         <input
           type="password"
           {...register('password', {
@@ -67,14 +75,10 @@ export default function SignUpPage() {
                 'Password must include an uppercase letter, a lowercase letter, a number, and a special character.',
             },
           })}
-          className="border border-input-border px-5 py-2.5 rounded-md bg-form-bg placeholder:text-second-text-color text-second-text-color text-form"
+          className="form-field"
           placeholder="Password"
         />
-        {errors.password && (
-          <p className="text-alert-color text-small">
-            {errors.password.message}
-          </p>
-        )}
+        <FieldError message={errors.password?.message} />
         <input
           type="password"
           {...register('confirmPassword', {
@@ -82,31 +86,75 @@ export default function SignUpPage() {
             validate: (value) =>
               value === getValues('password') || 'Passwords do not match',
           })}
-          className="border border-input-border px-5 py-2.5 rounded-md bg-form-bg placeholder:text-second-text-color text-second-text-color text-form"
+          className="form-field"
           placeholder="Confirm Password"
         />
-        {errors.confirmPassword && (
-          <p className="text-alert-color text-small">
-            {errors.confirmPassword.message}
-          </p>
+        <FieldError message={errors.confirmPassword?.message} />
+
+        {selectedRole === '2' && (
+          <div className="flex flex-col gap-4">
+            <input
+              {...register('store.name', {
+                required: 'Please enter store name.',
+                minLength: {
+                  value: 3,
+                  message: 'Store name must be at least 3 characters long.',
+                },
+              })}
+              className="form-field"
+              placeholder="Store Name"
+            />
+            <FieldError message={errors.store?.name?.message} />
+            <input
+              type="tel"
+              {...register('store.phone', {
+                required: 'Please enter store phone number.',
+                pattern: {
+                  value: /^(\+90|0)?[2-5]\d{9}$/,
+                  message: 'Please enter a valid Türkiye phone number.',
+                },
+              })}
+              className="form-field"
+              placeholder="Store Phone"
+            />
+            <FieldError message={errors.store?.phone?.message} />
+            <input
+              type="text"
+              {...register('store.tax_no', {
+                required: 'Please enter tax number.',
+                pattern: {
+                  value: /^T\d{4}V\d{6}$/,
+                  message: 'Tax ID must match the format TXXXXVXXXXXX.',
+                },
+              })}
+              className="form-field"
+              placeholder="Tax Number"
+            />
+            <FieldError message={errors.store?.tax_no?.message} />
+            <input
+              type="text"
+              {...register('store.bank_account', {
+                required: 'Please enter IBAN.',
+                pattern: {
+                  value: /^TR\d{24}$/,
+                  message: 'Please enter a valid IBAN.',
+                },
+              })}
+              className="form-field"
+              placeholder="Store IBAN"
+            />
+            <FieldError message={errors.store?.bank_account?.message} />
+          </div>
         )}
 
         {isPending ? (
-          <div className="w-full border border-input-border px-5 py-2.5 rounded-md bg-form-bg text-second-text-color text-form cursor-not-allowed">
+          <div className="form-field w-full cursor-not-allowed">
             Loading roles
-            <span className="text-2xl leading-none">
-              <span className="inline-block animate-bounce ">.</span>
-              <span className="inline-block animate-bounce [animation-delay:150ms]">
-                .
-              </span>
-              <span className="inline-block animate-bounce [animation-delay:300ms] ">
-                .
-              </span>
-            </span>
+            <BouncingDots />
           </div>
         ) : error ? (
           <select
-            className="w-full appearance-none border border-input-border px-5 py-2.5 rounded-md bg-form-bg text-alert-color text-form cursor-not-allowed"
+            className="form-field w-full appearance-none text-alert-color cursor-not-allowed"
             disabled
           >
             <option>Error fetching roles...</option>
@@ -114,8 +162,8 @@ export default function SignUpPage() {
         ) : (
           <div className="relative">
             <select
-              {...register('role', { required: 'Please select a role.' })}
-              className="w-full appearance-none border border-input-border px-5 py-2.5 rounded-md bg-form-bg text-second-text-color text-form cursor-pointer"
+              {...register('role_id', { required: 'Please select a role.' })}
+              className="form-field w-full appearance-none cursor-pointer"
             >
               {data.map((role) => (
                 <option key={role.id} value={role.id}>
@@ -128,9 +176,7 @@ export default function SignUpPage() {
             </span>
           </div>
         )}
-        {errors.role && (
-          <p className="text-alert-color text-small">{errors.role.message}</p>
-        )}
+
         <button
           disabled={!isValid}
           className="text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md cursor-pointer lg:w-2/3 lg:self-center disabled:opacity-60 disabled:cursor-not-allowed"
