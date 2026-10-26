@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { getRoles } from '@/api/api';
-import { useQuery } from '@tanstack/react-query';
+import { getRoles, signup } from '@/api/api';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import BouncingDots from '@/components/SignUpPage/BouncingDots';
 import FieldError from '@/components/SignUpPage/FieldError';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 export default function SignUpPage() {
   const {
@@ -10,15 +12,17 @@ export default function SignUpPage() {
     getValues,
     watch,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: { role_id: '3' },
+    defaultValues: {
+      role_id: '3',
+    },
     mode: 'onChange',
     shouldUnregister: true,
   });
 
   const selectedRole = watch('role_id');
+  const navigate = useNavigate();
 
   const { data, isPending, error } = useQuery({
     queryKey: ['roles'],
@@ -26,8 +30,29 @@ export default function SignUpPage() {
     staleTime: Infinity,
   });
 
+  const mutation = useMutation({
+    mutationFn: signup,
+    onSuccess: () => {
+      navigate('/', { replace: true });
+      toast.success(
+        'You need to click the link in your email to activate your account!',
+      );
+    },
+    onError: (err) => {
+      const data = err.response?.data;
+      if (data?.err?.code === 'SQLITE_CONSTRAINT') {
+        toast.error('An account with this email already exists.');
+      } else {
+        toast.error(data?.error ?? err.message);
+      }
+    },
+  });
+
   const onSubmit = (formData) => {
-    console.log(formData);
+    const { name, email, password, role_id, store } = formData;
+    const payload = { name, email, password, role_id: Number(role_id) };
+    if (role_id === '2') payload.store = store;
+    mutation.mutate(payload);
   };
 
   return (
@@ -178,10 +203,13 @@ export default function SignUpPage() {
         )}
 
         <button
-          disabled={!isValid}
-          className="text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md cursor-pointer lg:w-2/3 lg:self-center disabled:opacity-60 disabled:cursor-not-allowed"
+          disabled={!isValid || mutation.isPending}
+          className="text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md cursor-pointer lg:w-2/3 lg:self-center disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
         >
-          Sign Up
+          {mutation.isPending ? 'Signing Up' : 'Sign Up'}
+          {mutation.isPending && (
+            <span className="size-5 rounded-full border-2 border-light-text-color border-t-transparent animate-spin" />
+          )}
         </button>
       </div>
     </form>
