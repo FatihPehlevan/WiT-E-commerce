@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getRoles, signup } from '@/api/api';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '@/api/api';
+import { fetchRoles } from '@/store/actions/clientActions';
+import { useMutation } from '@tanstack/react-query';
 import BouncingDots from '@/components/SignUpPage/BouncingDots';
 import FieldError from '@/components/SignUpPage/FieldError';
 import { toast } from 'react-toastify';
@@ -24,11 +27,13 @@ export default function SignUpPage() {
   const selectedRole = watch('role_id');
   const navigate = useNavigate();
 
-  const { data, isPending, error } = useQuery({
-    queryKey: ['roles'],
-    queryFn: getRoles,
-    staleTime: Infinity,
-  });
+  const dispatch = useDispatch();
+  const roles = useSelector((state) => state.client.roles);
+  const [rolesError, setRolesError] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchRoles()).catch((error) => setRolesError(error));
+  }, []);
 
   const mutation = useMutation({
     mutationFn: signup,
@@ -172,12 +177,12 @@ export default function SignUpPage() {
           </div>
         )}
 
-        {isPending ? (
+        {roles.length === 0 && !rolesError ? (
           <div className="form-field w-full cursor-not-allowed">
             Loading roles
             <BouncingDots />
           </div>
-        ) : error ? (
+        ) : rolesError ? (
           <select
             className="form-field w-full appearance-none text-alert-color cursor-not-allowed"
             disabled
@@ -190,7 +195,7 @@ export default function SignUpPage() {
               {...register('role_id', { required: 'Please select a role.' })}
               className="form-field w-full appearance-none cursor-pointer"
             >
-              {data.map((role) => (
+              {roles.map((role) => (
                 <option key={role.id} value={role.id}>
                   {role.name}
                 </option>

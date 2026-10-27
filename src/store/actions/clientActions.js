@@ -1,3 +1,5 @@
+import { getRoles } from '@/api/api';
+
 export const SET_USER = 'SET_USER';
 export const SET_THEME = 'SET_THEME';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
@@ -22,3 +24,8 @@ export const setUser = (user) => ({
   type: SET_USER,
   payload: user,
 });
+
+export const fetchRoles = () => (dispatch, getState) => {
+  if (getState().client.roles.length > 0) return Promise.resolve();
+  return getRoles().then((roles) => dispatch(setRoles(roles)));
+};
