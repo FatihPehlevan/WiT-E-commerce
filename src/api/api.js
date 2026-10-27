@@ -10,4 +10,7 @@ export const getRoles = () =>
 export const signup = (payload) =>
   api.post('/signup', payload).then((response) => response.data);
 
+export const login = (payload) =>
+  api.post('/login', payload).then((response) => response.data);
+
 export default api;

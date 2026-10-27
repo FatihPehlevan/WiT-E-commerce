@@ -211,7 +211,7 @@ export default function SignUpPage() {
           disabled={!isValid || mutation.isPending}
           className="text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md cursor-pointer lg:w-2/3 lg:self-center disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
         >
-          {mutation.isPending ? 'Signing Up' : 'Sign Up'}
+          {mutation.isPending ? 'Signing up' : 'Sign up'}
           {mutation.isPending && (
             <span className="size-5 rounded-full border-2 border-light-text-color border-t-transparent animate-spin" />
           )}
