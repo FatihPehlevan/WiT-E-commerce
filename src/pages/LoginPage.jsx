@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router';
 import { useMutation } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import FieldError from '@/components/SignUpPage/FieldError';
 import { login } from '@/api/api';
+import { setUser } from '@/store/actions/clientActions';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 function LoginPage() {
   const {
@@ -13,19 +16,28 @@ function LoginPage() {
   } = useForm({
     defaultValues: {
       role_id: '3',
+      email: 'customer@commerce.com',
+      password: '123456',
     },
     mode: 'onChange',
     shouldUnregister: true,
   });
 
+  const [userToken, setUserToken] = useLocalStorage('userToken', null);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: () => {
+    onSuccess: (data, formData) => {
+      dispatch(setUser(data));
+      if (formData.rememberMe) setUserToken(data.token);
+      else localStorage.removeItem('userToken');
       navigate(from, { replace: true });
+      toast.success('Logged in');
     },
     onError: (err) => {
       toast.error('No such user');
