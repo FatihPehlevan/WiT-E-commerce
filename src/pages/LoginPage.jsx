@@ -23,8 +23,6 @@ function LoginPage() {
     shouldUnregister: true,
   });
 
-  const [userToken, setUserToken] = useLocalStorage('userToken', null);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +32,7 @@ function LoginPage() {
     mutationFn: login,
     onSuccess: (data, formData) => {
       dispatch(setUser(data));
-      if (formData.rememberMe) setUserToken(data.token);
+      if (formData.rememberMe) localStorage.setItem('userToken', data.token);
       else localStorage.removeItem('userToken');
       navigate(from, { replace: true });
       toast.success('Logged in');

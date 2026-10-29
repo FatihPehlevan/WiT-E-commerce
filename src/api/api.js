@@ -13,4 +13,9 @@ export const signup = (payload) =>
 export const login = (payload) =>
   api.post('/login', payload).then((response) => response.data);
 
+export const verify = (token) =>
+  api
+    .get('/verify', { headers: { Authorization: token } })
+    .then((res) => res.data);
+
 export default api;
