@@ -20,6 +20,7 @@ function App() {
       });
     } else localStorage.removeItem('userToken');
   }, []);
+
   return (
     <>
       <Header />

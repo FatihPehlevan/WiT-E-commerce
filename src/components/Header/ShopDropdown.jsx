@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
 import slugify from 'slugify';
+import { FETCH_STATES } from '@/store/actions/productActions';
 
 const genders = [
   { key: 'k', label: 'Kadın', slug: 'kadin' },
@@ -9,6 +10,7 @@ const genders = [
 
 export default function ShopDropdown() {
   const categories = useSelector((state) => state.product.categories);
+  const fetchState = useSelector((state) => state.product.categoriesFetchState);
 
   return (
     <div className="absolute top-full left-0 z-10 hidden pt-4 lg:group-hover:block">
@@ -17,6 +19,10 @@ export default function ShopDropdown() {
           <div key={gender.key} className="flex flex-col gap-6">
             <h6 className="text-h6 text-text-color">{gender.label}</h6>
             <div className="flex flex-col gap-4 text-link text-second-text-color">
+              {fetchState === FETCH_STATES.FETCHING && <p>Loading...</p>}
+              {fetchState === FETCH_STATES.FAILED && (
+                <p>Error fetching categories</p>
+              )}
               {categories
                 .filter((category) => category.gender === gender.key)
                 .map((category) => (

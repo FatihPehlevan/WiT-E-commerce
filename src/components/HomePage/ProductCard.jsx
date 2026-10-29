@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import Stars from '../ProductDetailsPage/Stars';
 const colorClasses = {
   primary: 'bg-primary-color',
   secondary: 'bg-secondary-color-1',
@@ -7,24 +8,24 @@ const colorClasses = {
 };
 
 export default function ProductCard({ product }) {
-  const { id, src, title, subTitle, price, salePrice, colors } = product;
+  const { id, images, name, price, rating, stock, sell_count } = product;
   return (
     <Link to={`/product/${id}`} className="flex flex-col gap-2.5 items-center">
-      <img src={src} alt="" />
+      <img
+        src={images[0].url}
+        alt={name}
+        className="w-full aspect-3/4 object-cover hover:brightness-75 transition duration-300"
+      />
       {/* className="lg:w-60 lg:h-106.75 lg:object-cover" */}
-      <h5 className="text-h5 text-text-color pt-6">{title}</h5>
-      <h6 className="text-link text-second-text-color">{subTitle}</h6>
-      <div className="flex gap-1.5 text-h5">
+      <h5 className="text-h5 text-text-color pt-6">{name}</h5>
+      <div className="flex flex-col gap-3 text-h5 items-center">
         <span className="text-second-text-color">${price}</span>{' '}
-        <span className="text-secondary-color-1">${salePrice} </span>
-      </div>
-      <div className="flex gap-1.5 pb-9">
-        {colors.map((color, index) => (
-          <div
-            key={index}
-            className={`w-4 h-4 rounded-full ${colorClasses[color]}`}
-          ></div>
-        ))}
+        <Stars rating={rating} />
+        {stock > 0 && stock < 10 && (
+          <span className="text-alert-color">Only {stock} left</span>
+        )}
+        {stock === 0 && <span>Out of stock</span>}
+        <span className="text-second-text-color">{sell_count} sold</span>
       </div>
     </Link>
   );

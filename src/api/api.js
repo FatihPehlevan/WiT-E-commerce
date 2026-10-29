@@ -21,4 +21,6 @@ export const verify = (token) =>
 export const getCategories = () =>
   api.get('/categories').then((res) => res.data);
 
+export const getProducts = () => api.get('/products').then((res) => res.data);
+
 export default api;
