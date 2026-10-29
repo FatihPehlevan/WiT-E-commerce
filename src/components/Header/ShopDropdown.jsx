@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { useSelector } from 'react-redux';
+import slugify from 'slugify';
 
 const genders = [
   { key: 'k', label: 'Kadın', slug: 'kadin' },
@@ -21,7 +22,7 @@ export default function ShopDropdown() {
                 .map((category) => (
                   <Link
                     key={category.id}
-                    to={`/shop/${gender.slug}/${category.code.split(':')[1]}/${category.id}`}
+                    to={`/shop/${gender.slug}/${slugify(category.title, { lower: true })}/${category.id}`}
                     className="hover:text-text-color"
                   >
                     {category.title}

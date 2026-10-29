@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router';
+import slugify from 'slugify';
 
 export default function ShopCategories() {
   const categories = useSelector((state) => state.product.categories);
@@ -13,7 +14,7 @@ export default function ShopCategories() {
         {categoriesSorted.map((category) => (
           <Link
             key={category.id}
-            to={`/shop/${category.gender === 'k' ? 'kadin' : 'erkek'}/${category.code.split(':')[1]}/${category.id}`}
+            to={`/shop/${category.gender === 'k' ? 'kadin' : 'erkek'}/${slugify(category.title, { lower: true })}/${category.id}`}
             className="relative aspect-3/4 lg:flex-1"
           >
             <img
