@@ -4,6 +4,7 @@ import HeaderActions from '@/components/Header/HeaderActions';
 import NavLinks from '@/components/Header/NavLinks';
 import LoginRegister from '@/components/Header/LoginRegister';
 import Favorites from '@/components/Header/Favorites';
+import { Link } from 'react-router';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,9 @@ export default function Header() {
       <div className="py-9 px-9 lg:py-6">
         <div className="flex justify-between text-text-color">
           <div className="flex lg:gap-28.25 lg:items-center">
-            <span className="text-h3">Bandage</span>
+            <Link to="/">
+              <span className="text-h3">Bandage</span>
+            </Link>
             <NavLinks className="hidden lg:flex lg:flex-row gap-4 lg:text-link items-center" />
           </div>
           <HeaderActions

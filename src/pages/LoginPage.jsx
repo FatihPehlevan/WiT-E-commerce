@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import FieldError from '@/components/SignUpPage/FieldError';
 import { login } from '@/api/api';
 import { setUser } from '@/store/actions/clientActions';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 function LoginPage() {
   const {

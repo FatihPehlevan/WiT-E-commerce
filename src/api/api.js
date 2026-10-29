@@ -18,4 +18,7 @@ export const verify = (token) =>
     .get('/verify', { headers: { Authorization: token } })
     .then((res) => res.data);
 
+export const getCategories = () =>
+  api.get('/categories').then((res) => res.data);
+
 export default api;
