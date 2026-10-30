@@ -1,12 +1,13 @@
 import ProductCard from '@/components/HomePage/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
-import { useParams } from 'react-router';
+import { useParams, useSearchParams } from 'react-router';
 
 export default function ShopPageProducts() {
   const { categoryId } = useParams();
-  const { data, isPending, error } = useProducts(categoryId);
+  const [searchParams] = useSearchParams();
+  const sort = searchParams.get('sort');
+  const { data, isPending, error } = useProducts(categoryId, sort);
   const products = data?.products ?? [];
-  console.log(categoryId);
 
   if (isPending)
     return (
@@ -21,6 +22,12 @@ export default function ShopPageProducts() {
     return (
       <p className="text-alert-color text-h3 w-full text-center pt-10">
         Error loading products
+      </p>
+    );
+  if (products.length === 0)
+    return (
+      <p className="text-alert-color text-h3 w-full text-center pt-10">
+        No products in this category
       </p>
     );
 
