@@ -1,9 +1,12 @@
 import ProductCard from '@/components/HomePage/ProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import { useParams } from 'react-router';
 
 export default function ShopPageProducts() {
-  const { data, isPending, error } = useProducts();
+  const { categoryId } = useParams();
+  const { data, isPending, error } = useProducts(categoryId);
   const products = data?.products ?? [];
+  console.log(categoryId);
 
   if (isPending)
     return (
