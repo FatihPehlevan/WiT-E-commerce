@@ -1,13 +1,9 @@
 import ProductCard from '@/components/HomePage/ProductCard';
-import { useProducts } from '@/hooks/useProducts';
-import { useParams, useSearchParams } from 'react-router';
+import { useShopProducts } from '@/hooks/useShopProducts';
+import Pagination from './Pagination';
 
 export default function ShopPageProducts() {
-  const { categoryId } = useParams();
-  const [searchParams] = useSearchParams();
-  const sort = searchParams.get('sort');
-  const filter = searchParams.get('filter');
-  const { data, isPending, error } = useProducts(categoryId, sort, filter);
+  const { data, isPending, error, page, limit } = useShopProducts();
   const products = data?.products ?? [];
 
   if (isPending)
@@ -33,10 +29,13 @@ export default function ShopPageProducts() {
     );
 
   return (
-    <div className="flex flex-col gap-7.5 pt-12 items-center lg:items-start lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15  lg:justify-between lg:max-w-275 lg:mx-auto">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col gap-7.5 pt-12 items-center lg:items-start lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15  lg:justify-between lg:max-w-275 lg:mx-auto">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      <Pagination total={data?.total} page={page} limit={limit} />
+    </>
   );
 }

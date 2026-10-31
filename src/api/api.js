@@ -21,9 +21,11 @@ export const verify = (token) =>
 export const getCategories = () =>
   api.get('/categories').then((res) => res.data);
 
-export const getProducts = (categoryId, sort, filter) =>
+export const getProducts = (categoryId, sort, filter, limit, offset) =>
   api
-    .get('/products', { params: { category: categoryId, sort, filter } })
+    .get('/products', {
+      params: { category: categoryId, sort, filter, limit, offset },
+    })
     .then((res) => res.data);
 
 export default api;

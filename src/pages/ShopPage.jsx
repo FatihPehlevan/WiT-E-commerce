@@ -2,7 +2,6 @@ import Brands from '@/components/ShopPage/Brands';
 import CategoryFilters from '@/components/ShopPage/CategoryFilters';
 import ShopCategories from '@/components/ShopPage/ShopCategories';
 import ShopHeader from '@/components/Header/InnerHeader';
-import Pagination from '@/components/ShopPage/Pagination';
 import ShopPageProducts from '@/components/ShopPage/ShopPageProducts';
 
 export default function ShopPage() {
@@ -12,7 +11,6 @@ export default function ShopPage() {
       <ShopCategories />
       <CategoryFilters />
       <ShopPageProducts />
-      <Pagination />
       <Brands />
     </section>
   );
