@@ -6,7 +6,8 @@ export default function ShopPageProducts() {
   const { categoryId } = useParams();
   const [searchParams] = useSearchParams();
   const sort = searchParams.get('sort');
-  const { data, isPending, error } = useProducts(categoryId, sort);
+  const filter = searchParams.get('filter');
+  const { data, isPending, error } = useProducts(categoryId, sort, filter);
   const products = data?.products ?? [];
 
   if (isPending)

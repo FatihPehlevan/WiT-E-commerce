@@ -1,23 +1,48 @@
 import { useSearchParams } from 'react-router';
+import { useState } from 'react';
 
 export default function CategoryFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [filter, setFilter] = useState(searchParams.get('filter') ?? '');
   const handleChange = (e) => {
+    const { value } = e.target;
     setSearchParams((searchParams) => {
-      if (!e.target.value) {
+      if (!value) {
         searchParams.delete('sort');
         return searchParams;
       }
-      searchParams.set('sort', e.target.value);
+      searchParams.set('sort', value);
       return searchParams;
     });
   };
+  const handleFilter = () => {
+    setSearchParams((searchParams) => {
+      if (!filter) {
+        searchParams.delete('filter');
+        return searchParams;
+      }
+      searchParams.set('filter', filter);
+      return searchParams;
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    setFilter(value);
+    if (!value) {
+      setSearchParams((prev) => {
+        prev.delete('filter');
+        return prev;
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col items-center bg-white gap-6 py-6 lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto lg:pt-12 lg:pb-0">
       <span className="text-h6 text-second-text-color">
         Showing all 25 results
       </span>
-      <div className="flex gap-4 items-center">
+      {/* <div className="flex gap-4 items-center">
         <span className="text-h6 text-second-text-color">Views: </span>
         <div className="border border-light-gray-2 rounded-md p-4">
           <i className="block iconify-[bi--grid-fill] text-text-color"></i>
@@ -25,7 +50,7 @@ export default function CategoryFilters() {
         <div className="border border-light-gray-2 rounded-md p-4">
           <i className="block iconify-[codicon--checklist-compact] text-text-color"></i>
         </div>
-      </div>
+      </div> */}
       <div className="flex gap-4">
         <div className="relative">
           <select
@@ -43,7 +68,16 @@ export default function CategoryFilters() {
             ▾
           </span>
         </div>
-        <button className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md cursor-pointer">
+        <input
+          value={filter}
+          onChange={handleInputChange}
+          className="form-field"
+          placeholder="Search"
+        />
+        <button
+          onClick={handleFilter}
+          className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md cursor-pointer"
+        >
           Filter
         </button>
       </div>
