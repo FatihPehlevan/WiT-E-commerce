@@ -1,16 +1,25 @@
 import { Link } from 'react-router';
 import Stars from '../ProductDetailsPage/Stars';
-const colorClasses = {
-  primary: 'bg-primary-color',
-  secondary: 'bg-secondary-color-1',
-  alert: 'bg-alert-color',
-  dark: 'bg-dark-background-color',
+import { useSelector } from 'react-redux';
+import slugify from 'slugify';
+
+const genders = {
+  k: 'kadin',
+  e: 'erkek',
 };
 
 export default function ProductCard({ product }) {
-  const { id, images, name, price, rating, stock, sell_count } = product;
+  const categories = useSelector((state) => state.product.categories);
+  const { id, images, name, price, rating, stock, sell_count, category_id } =
+    product;
+  const productCategory = categories.find(
+    (category) => category.id === category_id,
+  );
   return (
-    <Link to={`/product/${id}`} className="flex flex-col gap-2.5 items-center">
+    <Link
+      to={`/shop/${genders[productCategory.gender]}/${slugify(productCategory.title, { lower: true })}/${productCategory.id}/${slugify(name, { lower: true })}/${id}`}
+      className="flex flex-col gap-2.5 items-center"
+    >
       <img
         src={images[0].url}
         alt={name}

@@ -28,4 +28,7 @@ export const getProducts = (categoryId, sort, filter, limit, offset) =>
     })
     .then((res) => res.data);
 
+export const getProduct = (productId) =>
+  api.get(`/products/${productId}`).then((res) => res.data);
+
 export default api;

@@ -16,7 +16,10 @@ export default function PageContent() {
         path="/shop/:gender/:categoryName/:categoryId"
         element={<ShopPage />}
       />
-      <Route path="/product/:id" element={<ProductDetailsPage />} />
+      <Route
+        path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId"
+        element={<ProductDetailsPage />}
+      />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/signup" element={<SignUpPage />} />
