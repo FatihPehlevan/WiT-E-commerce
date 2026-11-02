@@ -1,15 +1,7 @@
 import Carousel from '@/components/HomePage/Carousel';
 import ProductInfo from './ProductInfo';
-import { singleProduct } from '@/data/data';
 import { useProduct } from '@/hooks/useProduct';
 import { useParams } from 'react-router';
-
-const colorClasses = {
-  primary: 'bg-primary-color',
-  secondary: 'bg-secondary-color-1',
-  alert: 'bg-alert-color',
-  dark: 'bg-dark-background-color',
-};
 
 export default function ProductSummary() {
   const { productId } = useParams();

@@ -33,7 +33,7 @@ export default function ProductInfo({ product }) {
       </div>
       <p className="text-paragraph text-second-text-color">{description}</p>
       <hr className="text-muted-color" />
-      <ProductActions />
+      <ProductActions product={product} />
     </div>
   );
 }

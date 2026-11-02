@@ -9,7 +9,7 @@ export default function ShopHeader({ title, showBack = false }) {
           {showBack && (
             <button
               onClick={() => navigate(-1)}
-              className="text-h3 cursor-pointer flex items-center gap-2"
+              className="text-h3 cursor-pointer flex items-center gap-2 text-second-text-color"
             >
               <i className="iconify-[bx--arrow-back]"></i>
               <span>Back</span>
