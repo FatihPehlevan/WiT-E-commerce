@@ -1,7 +1,12 @@
 import LoginRegister from '@/components/Header/LoginRegister';
 import Favorites from '@/components/Header/Favorites';
 import CartDropdown from './CartDropdown';
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+
 export default function HeaderActions({ isMenuOpen, setIsMenuOpen }) {
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart.cart);
   return (
     <div className="flex items-center gap-6 lg:text-primary-color lg:text-link">
       <span className="hidden lg:flex">
@@ -11,10 +16,13 @@ export default function HeaderActions({ isMenuOpen, setIsMenuOpen }) {
         <i className="iconify-[lucide--search] size-6 lg:size-4" />
       </button>
       <div className="relative group">
-        <button className="flex items-center justify-center cursor-pointer">
+        <button
+          onClick={() => navigate('/shoppingCart')}
+          className="flex items-center justify-center cursor-pointer"
+        >
           <i className="iconify-[lucide--shopping-cart] size-6 lg:size-4" />
         </button>
-        <CartDropdown />
+        {cart.length !== 0 && <CartDropdown />}
       </div>
 
       <Favorites

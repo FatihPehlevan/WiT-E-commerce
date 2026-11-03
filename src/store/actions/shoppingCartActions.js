@@ -2,6 +2,7 @@ export const SET_CART = 'SET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const SET_PAYMENT = 'SET_PAYMENT';
 export const SET_ADDRESS = 'SET_ADDRESS';
+export const CHANGE_IS_CHECKED = 'CHANGE_IS_CHECKED';
 
 export const setCart = (cart) => ({
   type: SET_CART,
@@ -19,4 +20,9 @@ export const setAddress = (address) => ({
 export const addToCart = (product) => ({
   type: ADD_TO_CART,
   payload: product,
+});
+
+export const changeIsChecked = (id) => ({
+  type: CHANGE_IS_CHECKED,
+  payload: id,
 });

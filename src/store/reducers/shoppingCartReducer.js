@@ -3,6 +3,7 @@ import {
   SET_PAYMENT,
   SET_ADDRESS,
   ADD_TO_CART,
+  CHANGE_IS_CHECKED,
 } from '../actions/shoppingCartActions';
 
 const initialState = {
@@ -20,6 +21,16 @@ export default function shoppingCartReducer(state = initialState, action) {
       return { ...state, payment: action.payload };
     case SET_ADDRESS:
       return { ...state, address: action.payload };
+    case CHANGE_IS_CHECKED:
+      return {
+        ...state,
+        cart: state.cart.map((cartItem) =>
+          cartItem.product.id === action.payload
+            ? { ...cartItem, checked: !cartItem.checked }
+            : cartItem,
+        ),
+      };
+
     case ADD_TO_CART: {
       const product = action.payload;
       const alreadyInCart = state.cart.find(
