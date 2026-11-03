@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setCart } from '@/store/actions/shoppingCartActions';
+import { emptyCart } from '@/store/actions/shoppingCartActions';
 
 function ShoppingCartHeader({ cart }) {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ function ShoppingCartHeader({ cart }) {
         Sepetim{' '}
         <span className="text-second-text-color">({cart.length} ürün)</span>
       </h3>
-      <button onClick={() => dispatch(setCart([]))} className="cursor-pointer">
+      <button onClick={() => dispatch(emptyCart())} className="cursor-pointer">
         <span className="flex items-center gap-2 text-alert-color text-h5">
           <span>Ürünleri sil</span>
           <i className="iconify-[akar-icons--trash-can] size-6 lg:size-4" />

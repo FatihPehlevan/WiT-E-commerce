@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router';
+
 export default function HeroSlide({ slide }) {
+  const navigate = useNavigate();
   const { imgSrcM, imgSrcD, title, topTitle, summary } = slide;
   return (
     <div className="flex flex-col relative flex-[0_0_100%] min-w-0">
@@ -16,7 +19,10 @@ export default function HeroSlide({ slide }) {
         <p className="text-h4 text-light-text-gray-1 w-71.75 lg:w-96">
           {summary}
         </p>
-        <button className="bg-success-color text-h3 rounded-md px-10 py-3.75 mb-41 cursor-pointer">
+        <button
+          onClick={() => navigate('/shop')}
+          className="bg-success-color text-h3 rounded-md px-10 py-3.75 mb-41 cursor-pointer"
+        >
           SHOP NOW
         </button>
       </div>
