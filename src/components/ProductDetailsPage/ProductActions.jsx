@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/actions/shoppingCartActions';
 import { toast } from 'react-toastify';
 

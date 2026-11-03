@@ -9,6 +9,7 @@ const initialState = {
   cart: [],
   payment: {},
   address: {},
+  total: 0,
 };
 
 export default function shoppingCartReducer(state = initialState, action) {
@@ -28,6 +29,7 @@ export default function shoppingCartReducer(state = initialState, action) {
       if (alreadyInCart) {
         return {
           ...state,
+          total: state.total + product.price,
           cart: state.cart.map((item) =>
             item.product.id === product.id
               ? { ...item, count: item.count + 1 }
@@ -38,6 +40,7 @@ export default function shoppingCartReducer(state = initialState, action) {
 
       return {
         ...state,
+        total: state.total + product.price,
         cart: [...state.cart, { count: 1, checked: true, product: product }],
       };
     }
