@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="flex flex-col gap-6 py-10 mx-10 lg:flex-row lg:justify-between lg:items-center lg:max-w-275 lg:mx-auto  border-b-2 border-[#e5e5e5]">
           <h3 className="text-h3 text-text-color">Bandage</h3>
           <div className="flex gap-5 text-primary-color">
-            <i className="iconify-[akar-icons--facebook-fill] size-6"></i>
-            <i className="iconify-[akar-icons--instagram-fill] size-6"></i>
-            <i className="iconify-[akar-icons--twitter-fill] size-6"></i>
+            <i className="iconify-[akar-icons--facebook-fill] size-6 cursor-pointer"></i>
+            <i className="iconify-[akar-icons--instagram-fill] size-6 cursor-pointer"></i>
+            <i className="iconify-[akar-icons--twitter-fill] size-6 cursor-pointer"></i>
           </div>
         </div>
       </div>

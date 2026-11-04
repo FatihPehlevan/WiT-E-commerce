@@ -1,7 +1,10 @@
-import React from 'react';
+import { useNavigate } from 'react-router';
 const kargo = (49.9).toFixed(2);
 const indirim = (19.9).toFixed(2);
+
 function ShoppingCartSummaryBox({ total }) {
+  const navigate = useNavigate();
+
   let roundedTotal = Math.round(total * 100) / 100 + 0;
   return (
     <div className="flex flex-col shrink-0 gap-4 bg-light-gray-1 px-4 py-4 rounded-sm lg:min-w-60 lg:self-start">
@@ -34,7 +37,11 @@ function ShoppingCartSummaryBox({ total }) {
           )}
         </span>
       </div>
-      <button className="py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color">
+      <button
+        onClick={() => navigate('/create-order')}
+        className="py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color disabled:bg-muted-color disabled:cursor-not-allowed"
+        disabled={total === 0}
+      >
         Alışverişi Tamamla
       </button>
     </div>
