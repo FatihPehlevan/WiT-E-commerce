@@ -43,3 +43,10 @@ export const removeFromCart = (id) => ({
   type: 'REMOVE_FROM_CART',
   payload: id,
 });
+
+export const calculateTotal = (cart) => {
+  return cart.reduce(
+    (sum, item) => sum + (item.checked ? item.count * item.product.price : 0),
+    0,
+  );
+};

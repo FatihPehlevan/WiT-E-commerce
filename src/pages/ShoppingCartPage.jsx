@@ -2,10 +2,11 @@ import ShoppingCartHeader from '@/components/ShoppingCart/ShoppingCartHeader';
 import ShoppingCartSummaryBox from '@/components/ShoppingCart/ShoppingCartSummaryBox';
 import ItemCard from '@/components/ShoppingCart/ItemCard';
 import { useSelector } from 'react-redux';
+import { calculateTotal } from '@/store/actions/shoppingCartActions';
 
 function ShoppingCartPage() {
   const cart = useSelector((state) => state.cart.cart);
-  const total = useSelector((state) => state.cart.total);
+  const total = calculateTotal(cart);
   if (cart.length === 0)
     return (
       <div className="flex flex-col gap-4 items-center lg:py-20">
