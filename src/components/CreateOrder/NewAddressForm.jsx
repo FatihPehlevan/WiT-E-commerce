@@ -1,13 +1,15 @@
 import { useForm } from 'react-hook-form';
+import { useRef, useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import FieldError from '@/components/SignUpPage/FieldError';
 import { turkeyCities } from '@/data/data';
-import { saveAddress } from '@/api/api';
+import { saveAddress, updateAddress } from '@/api/api';
 import { setAddress } from '@/store/actions/shoppingCartActions';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
-function NewAddressForm() {
+function NewAddressForm({ address, onSaved }) {
+  const isEditing = !!address;
   const dispatch = useDispatch();
   const {
     register,
@@ -17,27 +19,37 @@ function NewAddressForm() {
   } = useForm({
     mode: 'onChange',
     shouldUnregister: true,
+    defaultValues: address ?? {},
   });
+
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, []);
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: saveAddress,
-    onSuccess: (data) => {
-      dispatch(setAddress(data));
+    mutationFn: isEditing ? updateAddress : saveAddress,
+    onSuccess: (data, payload) => {
+      dispatch(setAddress(isEditing ? payload : data));
       reset();
-      toast.success('Address saved');
+      toast.success(isEditing ? 'Address updated' : 'Address saved');
       queryClient.invalidateQueries({ queryKey: ['addresses'] });
+      onSaved?.();
     },
-    onError: () => toast.error('Failed to save'),
+    onError: () =>
+      toast.error(isEditing ? 'Failed to update' : 'Failed to save'),
   });
 
   const onSubmit = (formData) => {
-    mutation.mutate(formData);
+    mutation.mutate(isEditing ? { ...formData, id: address.id } : formData);
   };
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit(onSubmit)}
       className="grid grid-cols-1 md:grid-cols-2 gap-4"
     >
@@ -140,7 +152,13 @@ function NewAddressForm() {
         disabled={!isValid || mutation.isPending}
         className="md:col-span-2 text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md lg:w-2/3 lg:mx-auto cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 disabled:bg-muted-color"
       >
-        {mutation.isPending ? 'Saving' : 'Save Address'}
+        {mutation.isPending
+          ? isEditing
+            ? 'Updating'
+            : 'Saving'
+          : isEditing
+            ? 'Update Address'
+            : 'Save Address'}
         {mutation.isPending && (
           <span className="size-5 rounded-full border-2 border-light-text-color border-t-transparent animate-spin" />
         )}

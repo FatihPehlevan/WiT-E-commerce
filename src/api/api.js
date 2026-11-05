@@ -46,6 +46,11 @@ export const login = (payload) =>
 export const saveAddress = (payload) =>
   api.post('/user/address', payload).then((res) => res.data);
 
+// PUT requests
+
+export const updateAddress = (payload) =>
+  api.put('/user/address', payload).then((res) => res.data);
+
 //DELETE requests
 
 export const deleteAddress = (id) =>

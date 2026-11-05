@@ -2,6 +2,7 @@ import {
   SET_CART,
   SET_PAYMENT,
   SET_ADDRESS,
+  SET_RECEIPT_ADDRESS,
   ADD_TO_CART,
   CHANGE_IS_CHECKED,
   CHANGE_COUNT,
@@ -13,6 +14,7 @@ const initialState = {
   cart: [],
   payment: {},
   address: {},
+  receiptAddress: {},
 };
 
 export default function shoppingCartReducer(state = initialState, action) {
@@ -23,6 +25,8 @@ export default function shoppingCartReducer(state = initialState, action) {
       return { ...state, payment: action.payload };
     case SET_ADDRESS:
       return { ...state, address: action.payload };
+    case SET_RECEIPT_ADDRESS:
+      return { ...state, receiptAddress: action.payload };
     case EMPTY_CART:
       return { ...state, cart: [] };
 

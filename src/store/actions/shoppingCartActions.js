@@ -2,6 +2,7 @@ export const SET_CART = 'SET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const SET_PAYMENT = 'SET_PAYMENT';
 export const SET_ADDRESS = 'SET_ADDRESS';
+export const SET_RECEIPT_ADDRESS = 'SET_RECEIPT_ADDRESS';
 export const CHANGE_IS_CHECKED = 'CHANGE_IS_CHECKED';
 export const CHANGE_COUNT = 'CHANGE_COUNT';
 export const EMPTY_CART = 'EMPTY_CART';
@@ -17,6 +18,10 @@ export const setPayment = (payment) => ({
 });
 export const setAddress = (address) => ({
   type: SET_ADDRESS,
+  payload: address,
+});
+export const setReceiptAddress = (address) => ({
+  type: SET_RECEIPT_ADDRESS,
   payload: address,
 });
 

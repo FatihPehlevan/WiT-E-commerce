@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 const kargo = (49.9).toFixed(2);
 const indirim = (19.9).toFixed(2);
 
-function CreateOrderSummary({ total }) {
+function CreateOrderSummary({ total, isReceiptReady }) {
   const [checked, setChecked] = useState(false);
   const address = useSelector((state) => state.cart.address);
   let roundedTotal = Math.round(total * 100) / 100 + 0;
@@ -35,7 +35,11 @@ function CreateOrderSummary({ total }) {
       <button
         onClick={() => console.log('Order')}
         className="py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color disabled:bg-muted-color disabled:cursor-not-allowed"
-        disabled={!checked || Object.keys(address || {}).length === 0}
+        disabled={
+          !checked ||
+          Object.keys(address || {}).length === 0 ||
+          !isReceiptReady
+        }
       >
         Siparişi Onayla
       </button>
