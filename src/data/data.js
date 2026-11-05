@@ -289,3 +289,24 @@ export const statistics = [
   { id: 3, value: 15, label: 'Countries Worldwide' },
   { id: 4, value: 100, label: 'Top Partners', suffix: '+' },
 ];
+
+// All 81 provinces of Turkey, listed in license plate code order (01–81)
+const turkeyCitiesByPlate = [
+  'Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Amasya', 'Ankara', 'Antalya',
+  'Artvin', 'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu',
+  'Burdur', 'Bursa', 'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır',
+  'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir', 'Gaziantep',
+  'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul',
+  'İzmir', 'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli',
+  'Konya', 'Kütahya', 'Malatya', 'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla',
+  'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya', 'Samsun', 'Siirt',
+  'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa',
+  'Uşak', 'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman',
+  'Kırıkkale', 'Batman', 'Şırnak', 'Bartın', 'Ardahan', 'Iğdır', 'Yalova',
+  'Karabük', 'Kilis', 'Osmaniye', 'Düzce',
+];
+
+// Sorted with Turkish alphabet rules (Ç after C, İ after I, Ş after S, etc.)
+export const turkeyCities = [...turkeyCitiesByPlate].sort((a, b) =>
+  a.localeCompare(b, 'tr')
+);

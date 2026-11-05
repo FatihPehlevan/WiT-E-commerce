@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import FieldError from '@/components/SignUpPage/FieldError';
-import { login } from '@/api/api';
+import { login, setAuthToken } from '@/api/api';
 import { setUser } from '@/store/actions/clientActions';
 
 function LoginPage() {
@@ -31,6 +31,7 @@ function LoginPage() {
     mutationFn: login,
     onSuccess: (data, formData) => {
       dispatch(setUser(data));
+      setAuthToken(data.token);
       if (formData.rememberMe) localStorage.setItem('userToken', data.token);
       else localStorage.removeItem('userToken');
       navigate(from, { replace: true });
