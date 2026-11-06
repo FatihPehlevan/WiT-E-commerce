@@ -44,8 +44,11 @@ function CartDropdown() {
           >
             Sepete Git
           </button>
-          <button className="flex-1 py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color">
-            Siparişi Tamamla
+          <button
+            onClick={() => navigate('/create-order')}
+            className="flex-1 py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color"
+          >
+            Alışverişi Tamamla
           </button>
         </div>
       </div>

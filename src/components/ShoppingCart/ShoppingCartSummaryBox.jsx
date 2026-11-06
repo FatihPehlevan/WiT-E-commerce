@@ -4,8 +4,8 @@ const indirim = (19.9).toFixed(2);
 
 function ShoppingCartSummaryBox({ total }) {
   const navigate = useNavigate();
-
   let roundedTotal = Math.round(total * 100) / 100 + 0;
+
   return (
     <div className="flex flex-col shrink-0 gap-4 bg-light-gray-1 px-4 py-4 rounded-sm lg:min-w-60 lg:self-start">
       <h3 className="text-primary-color text-h5">SİPARİŞ ÖZETİ</h3>
