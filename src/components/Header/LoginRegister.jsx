@@ -7,6 +7,7 @@ import { setUser } from '@/store/actions/clientActions';
 import {
   setAddress,
   setReceiptAddress,
+  setPayment,
 } from '@/store/actions/shoppingCartActions';
 import { setAuthToken } from '@/api/api';
 
@@ -23,7 +24,9 @@ export default function LoginRegister() {
     localStorage.removeItem('userToken');
     dispatch(setAddress({}));
     dispatch(setReceiptAddress({}));
+    dispatch(setPayment({}));
     queryClient.removeQueries({ queryKey: ['addresses'] });
+    queryClient.removeQueries({ queryKey: ['cards'] });
 
     navigate('/');
     toast.success('Logged out');

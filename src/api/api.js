@@ -32,6 +32,8 @@ export const getProduct = (productId) =>
 export const getAddresses = () =>
   api.get('/user/address').then((res) => res.data);
 
+export const getCards = () => api.get('/user/card').then((res) => res.data);
+
 // POST requests
 
 export const signup = (payload) =>
@@ -43,14 +45,23 @@ export const login = (payload) =>
 export const saveAddress = (payload) =>
   api.post('/user/address', payload).then((res) => res.data);
 
+export const saveCard = (payload) =>
+  api.post('/user/card', payload).then((res) => res.data);
+
 // PUT requests
 
 export const updateAddress = (payload) =>
   api.put('/user/address', payload).then((res) => res.data);
 
+export const updateCard = (payload) =>
+  api.put('/user/card', payload).then((res) => res.data);
+
 //DELETE requests
 
 export const deleteAddress = (id) =>
   api.delete(`/user/address/${id}`).then((res) => res.data);
+
+export const deleteCard = (id) =>
+  api.delete(`/user/card/${id}`).then((res) => res.data);
 
 export default api;

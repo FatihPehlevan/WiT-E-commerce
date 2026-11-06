@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router';
-const kargo = (49.9).toFixed(2);
-const indirim = (19.9).toFixed(2);
+import {
+  SHIPPING_FEE,
+  DISCOUNT,
+  calculatePayable,
+} from '@/store/actions/shoppingCartActions';
 
 function ShoppingCartSummaryBox({ total }) {
   const navigate = useNavigate();
@@ -17,21 +20,19 @@ function ShoppingCartSummaryBox({ total }) {
         {total > 0 && (
           <span className="text-text-color text-h6 flex justify-between">
             <span>Kargo</span>
-            <span>{kargo} TL</span>
+            <span>{SHIPPING_FEE.toFixed(2)} TL</span>
           </span>
         )}
         {total > 0 && (
           <span className="text-text-color text-h6 flex justify-between">
             <span>İndirim</span>
-            <span className="text-secondary-color-1">-{indirim} TL</span>
+            <span className="text-secondary-color-1">-{DISCOUNT.toFixed(2)} TL</span>
           </span>
         )}
         <span className="text-text-color text-h6 flex justify-between">
           <span>Toplam</span>
           {total > 0 ? (
-            <span>
-              {(total + Number(kargo) - Number(indirim)).toFixed(2)} TL
-            </span>
+            <span>{calculatePayable(total).toFixed(2)} TL</span>
           ) : (
             <span>0 TL</span>
           )}

@@ -55,3 +55,8 @@ export const calculateTotal = (cart) => {
     0,
   );
 };
+
+export const SHIPPING_FEE = 49.9;
+export const DISCOUNT = 19.9;
+
+export const calculatePayable = (total) => total + SHIPPING_FEE - DISCOUNT;

@@ -1,6 +1,9 @@
 import { useState } from 'react';
-const kargo = (49.9).toFixed(2);
-const indirim = (19.9).toFixed(2);
+import {
+  SHIPPING_FEE,
+  DISCOUNT,
+  calculatePayable,
+} from '@/store/actions/shoppingCartActions';
 
 function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
   const [checked, setChecked] = useState(false);
@@ -10,7 +13,7 @@ function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
     <div className="flex flex-col lg:shrink-0 gap-4 bg-light-gray-1 px-4 py-4 rounded-sm lg:min-w-60 lg:self-start">
       <h3 className="text-primary-color text-h5">ÖDENECEK TUTAR</h3>
       <span className="text-h3">
-        {(total + Number(kargo) - Number(indirim)).toFixed(2)} TL
+        {calculatePayable(total).toFixed(2)} TL
       </span>
       <span className="flex items-center gap-3">
         <input
@@ -46,13 +49,13 @@ function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
         {total > 0 && (
           <span className="text-text-color text-h6 flex justify-between">
             <span>Kargo</span>
-            <span>{kargo} TL</span>
+            <span>{SHIPPING_FEE.toFixed(2)} TL</span>
           </span>
         )}
         {total > 0 && (
           <span className="text-text-color text-h6 flex justify-between">
             <span>İndirim</span>
-            <span className="text-secondary-color-1">-{indirim} TL</span>
+            <span className="text-secondary-color-1">-{DISCOUNT.toFixed(2)} TL</span>
           </span>
         )}
       </div>
