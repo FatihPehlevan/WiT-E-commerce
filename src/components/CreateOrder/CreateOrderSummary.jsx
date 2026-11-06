@@ -2,8 +2,9 @@ import { useState } from 'react';
 const kargo = (49.9).toFixed(2);
 const indirim = (19.9).toFixed(2);
 
-function CreateOrderSummary({ total, isAddressReady }) {
+function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
   const [checked, setChecked] = useState(false);
+  const isAddressStep = step === 'address';
   let roundedTotal = Math.round(total * 100) / 100 + 0;
   return (
     <div className="flex flex-col lg:shrink-0 gap-4 bg-light-gray-1 px-4 py-4 rounded-sm lg:min-w-60 lg:self-start">
@@ -31,11 +32,11 @@ function CreateOrderSummary({ total, isAddressReady }) {
         </label>
       </span>
       <button
-        onClick={() => console.log('Order')}
+        onClick={isAddressStep ? onContinue : () => console.log('Order')}
         className="py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color disabled:bg-muted-color disabled:cursor-not-allowed"
-        disabled={!checked || !isAddressReady}
+        disabled={isAddressStep ? !isStepReady : !checked || !isStepReady}
       >
-        Siparişi Onayla
+        {isAddressStep ? 'Kaydet ve Devam Et' : 'Siparişi Onayla'}
       </button>
       <div className="flex flex-col gap-2">
         <span className="text-text-color text-h6 flex justify-between">
