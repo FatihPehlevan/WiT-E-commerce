@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   calculateTotal,
@@ -24,6 +24,20 @@ function CreateOrderPage() {
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingAddress, setEditingAddress] = useState(null);
+
+  useEffect(() => {
+    if (selectedAddress?.id) {
+      localStorage.setItem('shippingAddressId', selectedAddress.id);
+    }
+  }, [selectedAddress?.id]);
+
+  useEffect(() => {
+    if (!addresses?.length || selectedAddress?.id) return;
+
+    const savedId = Number(localStorage.getItem('shippingAddressId'));
+    const saved = addresses.find((address) => address.id === savedId);
+    dispatch(setAddress(saved ?? addresses[0]));
+  }, [addresses, selectedAddress, dispatch]);
 
   const openNewForm = () => {
     setEditingAddress(null);
@@ -51,8 +65,6 @@ function CreateOrderPage() {
     onError: () => toast.error('Failed to delete'),
   });
 
-  // Same list of cards is used for both shipping and receipt.
-  // Only the selected address, the action to dispatch and the radio group change.
   const renderAddressList = (selected, setAction, radioName) => (
     <div className="flex flex-col gap-4">
       {isPending && <p>Loading...</p>}

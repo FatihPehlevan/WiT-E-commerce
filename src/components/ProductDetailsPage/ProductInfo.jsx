@@ -15,7 +15,7 @@ export default function ProductInfo({ product }) {
   const { name, rating, price, stock, description } = product;
   const availability = setAvailability(stock);
   return (
-    <div className="flex flex-col gap-5 lg:w-3/4 lg:pt-14">
+    <div className="flex flex-col gap-5 lg:w-3/4">
       <div className="flex flex-col gap-2.5">
         <h4 className="text-text-color text-h4 font-bold">{name}</h4>
         <div className="flex items-center gap-2.5">

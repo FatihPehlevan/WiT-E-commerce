@@ -150,7 +150,7 @@ function NewAddressForm({ address, onSaved }) {
       </div>
       <button
         disabled={!isValid || mutation.isPending}
-        className="md:col-span-2 text-btn-text text-light-text-color bg-primary-color px-10 py-4 rounded-md lg:w-2/3 lg:mx-auto cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 disabled:bg-muted-color"
+        className="md:col-span-2 text-btn-text text-light-text-color bg-primary-color hover:bg-hover-color px-10 py-4 rounded-md lg:w-2/3 lg:mx-auto cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 disabled:bg-muted-color"
       >
         {mutation.isPending
           ? isEditing

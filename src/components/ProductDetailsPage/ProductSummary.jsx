@@ -19,8 +19,8 @@ export default function ProductSummary() {
 
   return (
     <div className="bg-light-gray-1">
-      <div className="flex flex-col gap-5 px-10 py-12 lg:flex-row lg:max-w-275 lg:mx-auto lg:px-0 lg:gap-10 lg:py-0">
-        <div className="flex flex-col gap-5 lg:w-1/2 lg:shrink-0 lg:pb-12">
+      <div className="flex flex-col gap-5 px-10 py-12 lg:grid lg:grid-cols-[1fr_2fr] lg:items-center lg:max-w-275 lg:mx-auto lg:px-0 lg:gap-x-10 lg:pt-0">
+        <div className="lg:col-start-1 lg:row-start-1">
           <Carousel>
             {images.map((img, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
@@ -28,13 +28,15 @@ export default function ProductSummary() {
               </div>
             ))}
           </Carousel>
-          <div className="flex gap-5 opacity-70">
-            {images.map((img, index) => (
-              <img key={index} src={img.url} alt="" className="block w-1/4" />
-            ))}
-          </div>
         </div>
-        <ProductInfo product={data} />
+        <div className="flex gap-5 opacity-70 lg:col-start-1 lg:row-start-2">
+          {images.map((img, index) => (
+            <img key={index} src={img.url} alt="" className="block w-1/4" />
+          ))}
+        </div>
+        <div className="lg:col-start-2 lg:row-start-1">
+          <ProductInfo product={data} />
+        </div>
       </div>
     </div>
   );

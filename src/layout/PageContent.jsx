@@ -8,15 +8,14 @@ import AboutUsPage from '@/pages/AboutUsPage';
 import SignUpPage from '@/pages/SignUpPage';
 import LoginPage from '@/pages/LoginPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage';
+import ProtectedRoute from '@/components/PageContent/ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { calculateTotal } from '@/store/actions/shoppingCartActions';
 
 export default function PageContent() {
-  const user = useSelector((state) => state.client.user);
   const cart = useSelector((state) => state.cart.cart);
   const total = calculateTotal(cart);
   const location = useLocation();
-  const isLoggedIn = user.name || localStorage.getItem('userToken');
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -37,15 +36,13 @@ export default function PageContent() {
       <Route
         path="/create-order"
         element={
-          isLoggedIn ? (
-            total > 0 ? (
+          <ProtectedRoute>
+            {total > 0 ? (
               <CreateOrderPage />
             ) : (
               <Navigate to="/shoppingCart" replace state={{ from: location }} />
-            )
-          ) : (
-            <Navigate to="/login" replace state={{ from: location }} />
-          )
+            )}
+          </ProtectedRoute>
         }
       />
     </Routes>

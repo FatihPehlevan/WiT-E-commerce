@@ -15,11 +15,16 @@ function App() {
 
     if (token) {
       setAuthToken(token);
-      verify(token).then((response) => {
-        dispatch(setUser(response));
-        setAuthToken(response.token);
-        localStorage.setItem('userToken', response.token);
-      });
+      verify(token)
+        .then((response) => {
+          dispatch(setUser(response));
+          setAuthToken(response.token);
+          localStorage.setItem('userToken', response.token);
+        })
+        .catch(() => {
+          localStorage.removeItem('userToken');
+          setAuthToken(null);
+        });
     } else localStorage.removeItem('userToken');
   }, []);
 

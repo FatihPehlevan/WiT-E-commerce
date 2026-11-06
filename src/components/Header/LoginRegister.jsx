@@ -1,16 +1,48 @@
-import { Link, useLocation } from 'react-router';
-import { useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 import Gravatar from 'react-gravatar';
+import { setUser } from '@/store/actions/clientActions';
+import {
+  setAddress,
+  setReceiptAddress,
+} from '@/store/actions/shoppingCartActions';
+import { setAuthToken } from '@/api/api';
 
 export default function LoginRegister() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const user = useSelector((state) => state.client.user);
+
+  const handleLogout = () => {
+    dispatch(setUser({}));
+    setAuthToken(null);
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('shippingAddressId');
+    dispatch(setAddress({}));
+    dispatch(setReceiptAddress({}));
+    queryClient.removeQueries({ queryKey: ['addresses'] });
+
+    navigate('/');
+    toast.success('Logged out');
+  };
+
   if (user.name)
     return (
       <span className="flex gap-2 items-center justify-center">
-        {' '}
-        <Gravatar email={user.email} className="rounded-full size-8" />{' '}
+        <Gravatar email={user.email} className="rounded-full size-8" />
         {user.name}
+        <button
+          type="button"
+          onClick={handleLogout}
+          aria-label="Logout"
+          className="flex items-center cursor-pointer hover:text-danger-color"
+        >
+          <i className="iconify-[lucide--log-out] size-5" />
+        </button>
       </span>
     );
   return (

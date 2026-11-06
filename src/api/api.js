@@ -14,10 +14,7 @@ export const setAuthToken = (token) => {
 export const getRoles = () =>
   api.get('/roles').then((response) => response.data);
 
-export const verify = (token) =>
-  api
-    .get('/verify', { headers: { Authorization: token } })
-    .then((res) => res.data);
+export const verify = (token) => api.get('/verify').then((res) => res.data);
 
 export const getCategories = () =>
   api.get('/categories').then((res) => res.data);
