@@ -56,12 +56,12 @@ function AddressCard({
               {address.name} {address.surname}
             </span>
           </div>
-          <div className="flex items-center gap-1 text-sm">
+          <div className="flex items-center gap-1 text-paragraph">
             <i className="iconify-[mdi--cellphone] size-5" />
             <span>{address.phone}</span>
           </div>
         </div>
-        <p className="text-sm text-second-text-color">
+        <p className="text-paragraph text-second-text-color">
           {address.address} {address.neighborhood} {address.district}/
           {address.city}
         </p>

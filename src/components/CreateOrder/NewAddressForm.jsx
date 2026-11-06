@@ -18,14 +18,13 @@ function NewAddressForm({ address, onSaved }) {
     formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
-    shouldUnregister: true,
     defaultValues: address ?? {},
   });
 
   const formRef = useRef(null);
 
   useEffect(() => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    formRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, []);
 
   const queryClient = useQueryClient();
@@ -37,7 +36,7 @@ function NewAddressForm({ address, onSaved }) {
       reset();
       toast.success(isEditing ? 'Address updated' : 'Address saved');
       queryClient.invalidateQueries({ queryKey: ['addresses'] });
-      onSaved?.();
+      onSaved();
     },
     onError: () =>
       toast.error(isEditing ? 'Failed to update' : 'Failed to save'),

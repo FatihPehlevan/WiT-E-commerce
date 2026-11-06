@@ -21,7 +21,6 @@ export default function LoginRegister() {
     dispatch(setUser({}));
     setAuthToken(null);
     localStorage.removeItem('userToken');
-    localStorage.removeItem('shippingAddressId');
     dispatch(setAddress({}));
     dispatch(setReceiptAddress({}));
     queryClient.removeQueries({ queryKey: ['addresses'] });

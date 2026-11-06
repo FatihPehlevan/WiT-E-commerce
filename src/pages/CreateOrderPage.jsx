@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   calculateTotal,
@@ -25,20 +25,6 @@ function CreateOrderPage() {
   const [showForm, setShowForm] = useState(false);
   const [editingAddress, setEditingAddress] = useState(null);
 
-  useEffect(() => {
-    if (selectedAddress?.id) {
-      localStorage.setItem('shippingAddressId', selectedAddress.id);
-    }
-  }, [selectedAddress?.id]);
-
-  useEffect(() => {
-    if (!addresses?.length || selectedAddress?.id) return;
-
-    const savedId = Number(localStorage.getItem('shippingAddressId'));
-    const saved = addresses.find((address) => address.id === savedId);
-    dispatch(setAddress(saved ?? addresses[0]));
-  }, [addresses, selectedAddress, dispatch]);
-
   const openNewForm = () => {
     setEditingAddress(null);
     setShowForm(true);
@@ -57,10 +43,10 @@ function CreateOrderPage() {
   const mutation = useMutation({
     mutationFn: deleteAddress,
     onSuccess: (data, deletedId) => {
-      if (selectedAddress?.id === deletedId) dispatch(setAddress({}));
-      if (receiptAddress?.id === deletedId) dispatch(setReceiptAddress({}));
-      toast.success('Address deleted');
+      if (selectedAddress.id === deletedId) dispatch(setAddress({}));
+      if (receiptAddress.id === deletedId) dispatch(setReceiptAddress({}));
       queryClient.invalidateQueries({ queryKey: ['addresses'] });
+      toast.success('Address deleted');
     },
     onError: () => toast.error('Failed to delete'),
   });
@@ -73,7 +59,7 @@ function CreateOrderPage() {
           key={address.id}
           address={address}
           radioName={radioName}
-          isSelected={selected?.id === address.id}
+          isSelected={selected.id === address.id}
           onSelect={() => dispatch(setAction(address))}
           onEdit={() => openEditForm(address)}
           onDelete={() => mutation.mutate(address.id)}
@@ -131,7 +117,9 @@ function CreateOrderPage() {
         </div>
         <CreateOrderSummary
           total={total}
-          isReceiptReady={sameAsShipping || !!receiptAddress?.id}
+          isAddressReady={
+            !!selectedAddress.id && (sameAsShipping || !!receiptAddress.id)
+          }
         />
       </div>
     </div>
