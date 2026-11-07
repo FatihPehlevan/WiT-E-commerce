@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { flushSync } from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import {
   calculateTotal,
@@ -26,6 +26,7 @@ function CreateOrderPage() {
   const selectedCard = useSelector((state) => state.cart.payment);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [step, setStep] = useState('address');
   const [cvv, setCvv] = useState('');
@@ -42,6 +43,7 @@ function CreateOrderPage() {
       dispatch(setAddress({}));
       dispatch(setReceiptAddress({}));
       dispatch(setPayment({}));
+      queryClient.invalidateQueries({ queryKey: ['orders'] });
       toast.success('Siparişin alındı!');
     },
     onError: () => toast.error('Failed to create order'),

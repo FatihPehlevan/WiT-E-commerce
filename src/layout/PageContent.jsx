@@ -9,6 +9,7 @@ import SignUpPage from '@/pages/SignUpPage';
 import LoginPage from '@/pages/LoginPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage';
 import OrderSuccessPage from '@/pages/OrderSuccessPage';
+import OrdersPage from '@/pages/OrdersPage';
 import ProtectedRoute from '@/components/PageContent/ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { calculateTotal } from '@/store/actions/shoppingCartActions';
@@ -51,6 +52,14 @@ export default function PageContent() {
         element={
           <ProtectedRoute>
             <OrderSuccessPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/orders"
+        element={
+          <ProtectedRoute>
+            <OrdersPage />
           </ProtectedRoute>
         }
       />

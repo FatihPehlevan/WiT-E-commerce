@@ -34,6 +34,8 @@ export const getAddresses = () =>
 
 export const getCards = () => api.get('/user/card').then((res) => res.data);
 
+export const getOrders = () => api.get('/order').then((res) => res.data);
+
 // POST requests
 
 export const signup = (payload) =>
