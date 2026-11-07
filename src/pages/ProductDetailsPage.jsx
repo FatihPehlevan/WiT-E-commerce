@@ -1,5 +1,5 @@
 import Brands from '@/components/ShopPage/Brands';
-import ProductCard from '@/components/HomePage/ProductCard';
+import BestsellerList from '@/components/HomePage/BestsellerList';
 import ProductSummary from '@/components/ProductDetailsPage/ProductSummary';
 import ProductSpecs from '@/components/ProductDetailsPage/ProductSpecs';
 import InnerHeader from '@/components/Header/InnerHeader';
@@ -15,12 +15,7 @@ export default function ProductDetailsPage() {
         <h3 className="text-h3 text-text-color pb-12 text-center">
           BESTSELLER PRODUCTS
         </h3>
-        <div className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15 lg:justify-between lg:max-w-275 lg:mx-auto *:nth-[n+5]:hidden lg:*:nth-[n+5]:flex">
-          <p className="text-center">there were old products logic here</p>
-          {/* {productsM.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))} */}
-        </div>
+        <BestsellerList className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15 lg:justify-between lg:max-w-275 lg:mx-auto" />
       </div>
       <Brands />
     </section>

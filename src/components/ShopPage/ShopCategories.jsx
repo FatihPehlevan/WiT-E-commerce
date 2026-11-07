@@ -2,12 +2,36 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router';
 import slugify from 'slugify';
+import { FETCH_STATES } from '@/store/actions/productActions';
 
 export default function ShopCategories() {
   const categories = useSelector((state) => state.product.categories);
+  const fetchState = useSelector(
+    (state) => state.product.categoriesFetchState,
+  );
   const categoriesSorted = [...categories]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 5);
+
+  if (fetchState === FETCH_STATES.FAILED)
+    return (
+      <div className="py-6 px-10 bg-light-gray-1 lg:pt-0 lg:pb-12">
+        <p className="text-alert-color text-h4 text-center py-10">
+          Error loading categories
+        </p>
+      </div>
+    );
+
+  if (fetchState !== FETCH_STATES.FETCHED)
+    return (
+      <div className="flex flex-col items-center py-6 px-10 bg-light-gray-1 lg:pt-0 lg:pb-12">
+        <div className="size-12 mt-10 rounded-full border-4 border-light-gray-2 border-t-primary-color animate-spin" />
+        <p className="text-h4 text-second-text-color mt-4 text-center">
+          Loading categories...
+        </p>
+      </div>
+    );
+
   return (
     <div className="py-6 px-10 bg-light-gray-1 lg:pt-0 lg:pb-12">
       <div className="flex flex-col gap-5 lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto">

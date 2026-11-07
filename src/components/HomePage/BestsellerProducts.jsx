@@ -1,5 +1,5 @@
-import { productsM } from '@/data/data';
-import ProductCard from '@/components/HomePage/ProductCard';
+import BestsellerList from '@/components/HomePage/BestsellerList';
+
 export default function BestsellerProducts() {
   return (
     <section className="pt-20 px-10">
@@ -14,11 +14,7 @@ export default function BestsellerProducts() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-[repeat(4,240px)] lg:justify-center lg:pb-20 lg:gap-y-20">
-        {/* {productsM.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))} */}
-      </div>
+      <BestsellerList className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-[repeat(4,240px)] lg:justify-center pb-20 lg:gap-y-20" />
     </section>
   );
 }
