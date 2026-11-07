@@ -15,7 +15,7 @@ export default function ProductDetailsPage() {
         <h3 className="text-h3 text-text-color pb-12 text-center">
           BESTSELLER PRODUCTS
         </h3>
-        <BestsellerList className="flex flex-col gap-7.5 items-center lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15 lg:justify-between lg:max-w-275 lg:mx-auto" />
+        <BestsellerList className="flex flex-col gap-7.5 px-10 lg:px-0 items-center lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15 lg:justify-between lg:max-w-275 lg:mx-auto" />
       </div>
       <Brands />
     </section>

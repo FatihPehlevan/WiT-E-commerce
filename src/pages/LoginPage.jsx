@@ -25,7 +25,8 @@ function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const fromPath = location.state?.from?.pathname;
+  const from = !fromPath || fromPath === '/signup' ? '/' : fromPath;
 
   const mutation = useMutation({
     mutationFn: login,

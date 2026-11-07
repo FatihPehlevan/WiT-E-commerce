@@ -13,7 +13,7 @@ function OrdersPage() {
     setOpenOrderId((currentId) => (currentId === id ? null : id));
 
   return (
-    <div className="flex flex-col gap-6 py-10 px-6 lg:px-0 text-text-color lg:max-w-275 lg:mx-auto">
+    <div className="flex flex-col gap-6 py-10 px-10 lg:px-0 text-text-color lg:max-w-275 lg:mx-auto">
       <h2 className="text-h3">Siparişlerim</h2>
 
       {isPending ? (
@@ -33,14 +33,14 @@ function OrdersPage() {
         </div>
       ) : (
         <div className="rounded-lg border border-light-gray-2 overflow-x-auto">
-          <table className="w-full min-w-140 text-left">
+          <table className="w-full text-left">
             <thead className="bg-light-gray-1 text-h6">
               <tr>
-                <th className="px-5 py-4">Sipariş No</th>
-                <th className="px-5 py-4">Tarih</th>
-                <th className="px-5 py-4">Ürünler</th>
-                <th className="px-5 py-4">Tutar</th>
-                <th className="px-5 py-4" />
+                <th className="px-3 py-4 md:px-5">Sipariş No</th>
+                <th className="px-3 py-4 md:px-5">Tarih</th>
+                <th className="hidden md:table-cell px-5 py-4">Ürünler</th>
+                <th className="px-3 py-4 md:px-5">Tutar</th>
+                <th className="px-3 py-4 md:px-5" />
               </tr>
             </thead>
             <tbody>

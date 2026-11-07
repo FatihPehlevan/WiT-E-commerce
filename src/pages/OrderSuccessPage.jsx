@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 function OrderSuccessPage() {
   return (
-    <div className="flex flex-col gap-4 items-center text-center py-20 px-6 text-text-color">
+    <div className="flex flex-col gap-4 items-center text-center py-20 px-10 text-text-color">
       <i className="iconify-[lucide--circle-check] text-success-color size-16" />
       <h2 className="text-h3">Tebrikler, siparişin alındı!</h2>
       <p className="text-paragraph text-second-text-color max-w-md">

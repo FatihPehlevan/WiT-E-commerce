@@ -3,7 +3,6 @@ import Topbar from '@/components/Header/Topbar';
 import HeaderActions from '@/components/Header/HeaderActions';
 import NavLinks from '@/components/Header/NavLinks';
 import LoginRegister from '@/components/Header/LoginRegister';
-import Favorites from '@/components/Header/Favorites';
 import { Link } from 'react-router';
 
 export default function Header() {
@@ -32,10 +31,6 @@ export default function Header() {
             />
             <div className="flex flex-col gap-7.5 pt-7.5 text-primary-color text-mobile-menu lg:hidden">
               <LoginRegister />
-              <Favorites
-                className="flex gap-1.25 items-center justify-center"
-                iconSize="size-7"
-              />
             </div>
           </>
         )}

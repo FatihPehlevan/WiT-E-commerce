@@ -62,12 +62,12 @@ export default function CategoryFilters() {
           <i className="block iconify-[codicon--checklist-compact] text-text-color"></i>
         </div>
       </div> */}
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4 w-full px-10 lg:flex-row lg:w-auto lg:px-0">
         <div className="relative">
           <select
             value={searchParams.get('sort') ?? ''}
             onChange={handleChange}
-            className="form-field w-full appearance-none cursor-pointer"
+            className="form-field w-full appearance-none cursor-pointer pr-10"
           >
             <option value="">Popularity</option>
             <option value="price:asc">Price Ascending</option>
@@ -79,18 +79,20 @@ export default function CategoryFilters() {
             ▾
           </span>
         </div>
-        <input
-          value={filter}
-          onChange={handleInputChange}
-          className="form-field"
-          placeholder="Search"
-        />
-        <button
-          onClick={handleFilter}
-          className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md cursor-pointer"
-        >
-          Filter
-        </button>
+        <div className="flex gap-4">
+          <input
+            value={filter}
+            onChange={handleInputChange}
+            className="form-field flex-1 min-w-0 lg:flex-none"
+            placeholder="Search"
+          />
+          <button
+            onClick={handleFilter}
+            className="bg-primary-color text-light-text-color text-h6 px-7 rounded-md cursor-pointer"
+          >
+            Filter
+          </button>
+        </div>
       </div>
     </div>
   );

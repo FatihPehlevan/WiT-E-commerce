@@ -34,17 +34,17 @@ export default function ShopCategories() {
 
   return (
     <div className="py-6 px-10 bg-light-gray-1 lg:pt-0 lg:pb-12">
-      <div className="flex flex-col gap-5 lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto">
+      <div className="grid grid-cols-2 gap-5 lg:flex lg:flex-row lg:justify-between lg:max-w-275 lg:mx-auto">
         {categoriesSorted.map((category) => (
           <Link
             key={category.id}
             to={`/shop/${category.gender === 'k' ? 'kadin' : 'erkek'}/${slugify(category.title, { lower: true })}/${category.id}`}
-            className="relative aspect-3/4 lg:flex-1"
+            className="relative lg:flex-1 max-lg:last:odd:col-span-2 max-lg:last:odd:justify-self-center max-lg:last:odd:w-[calc(50%-0.625rem)]"
           >
             <img
               src={category.img}
               alt={category.title}
-              className="w-full h-full object-cover"
+              className="w-full aspect-3/4 object-cover"
             />
             <div className="flex flex-col gap-3 absolute inset-0 justify-center items-center text-light-text-color text-h5 bg-black/30 hover:bg-black/50 transition-colors duration-250 cursor-pointer">
               {category.gender === 'k' ? <p>Kadın</p> : <p>Erkek</p>}

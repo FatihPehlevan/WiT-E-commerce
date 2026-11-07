@@ -33,10 +33,10 @@ export default function HeaderActions({ isMenuOpen, setIsMenuOpen }) {
         {cart.length !== 0 && <CartDropdown />}
       </div>
 
-      <div className="relative group hidden lg:flex">
+      <div className="relative group flex">
         <Favorites
           className="flex gap-1.25 items-center justify-center cursor-pointer"
-          iconSize="size-4"
+          iconSize="size-6 lg:size-4"
         />
         {favorites.length !== 0 && <FavoritesDropdown />}
       </div>

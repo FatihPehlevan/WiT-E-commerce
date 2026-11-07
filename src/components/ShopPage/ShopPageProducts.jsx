@@ -30,7 +30,7 @@ export default function ShopPageProducts() {
 
   return (
     <>
-      <div className="flex flex-col gap-7.5 pt-12 items-center lg:items-start lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15  lg:justify-between lg:max-w-275 lg:mx-auto">
+      <div className="flex flex-col gap-7.5 pt-12 px-10 lg:px-0 items-center lg:items-start lg:grid lg:grid-cols-4 lg:pb-0 lg:gap-y-15  lg:justify-between lg:max-w-275 lg:mx-auto">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

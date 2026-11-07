@@ -70,8 +70,8 @@ function CreateOrderPage() {
   };
 
   return (
-    <div className="py-6 text-text-color flex flex-col items-center lg:justify-between lg:max-w-275 lg:mx-auto">
-      <div className="flex w-full justify-between py-6">
+    <div className="py-6 px-10 lg:px-0 text-text-color flex flex-col items-center lg:justify-between lg:max-w-275 lg:mx-auto">
+      <div className="flex flex-col gap-8 w-full py-6 lg:flex-row lg:justify-between lg:gap-4">
         <div className="flex flex-col gap-6 w-full max-w-2xl">
           <CheckoutTabs
             step={step}
