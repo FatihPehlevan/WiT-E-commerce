@@ -48,6 +48,9 @@ export const saveAddress = (payload) =>
 export const saveCard = (payload) =>
   api.post('/user/card', payload).then((res) => res.data);
 
+export const createOrder = (payload) =>
+  api.post('/order', payload).then((res) => res.data);
+
 // PUT requests
 
 export const updateAddress = (payload) =>

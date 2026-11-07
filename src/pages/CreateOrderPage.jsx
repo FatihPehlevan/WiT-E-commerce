@@ -1,6 +1,18 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { calculateTotal } from '@/store/actions/shoppingCartActions';
+import { flushSync } from 'react-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
+import {
+  calculateTotal,
+  calculatePayable,
+  setCart,
+  setAddress,
+  setReceiptAddress,
+  setPayment,
+} from '@/store/actions/shoppingCartActions';
+import { createOrder } from '@/api/api';
 import AddressStep from '@/components/CreateOrder/AddressStep';
 import CheckoutTabs from '@/components/CreateOrder/CheckoutTabs';
 import CreateOrderSummary from '@/components/CreateOrder/CreateOrderSummary';
@@ -12,6 +24,8 @@ function CreateOrderPage() {
   const selectedAddress = useSelector((state) => state.cart.address);
   const receiptAddress = useSelector((state) => state.cart.receiptAddress);
   const selectedCard = useSelector((state) => state.cart.payment);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [step, setStep] = useState('address');
   const [cvv, setCvv] = useState('');
@@ -19,6 +33,39 @@ function CreateOrderPage() {
   const isAddressReady =
     !!selectedAddress.id && (sameAsShipping || !!receiptAddress.id);
   const isPaymentReady = !!selectedCard.id && cvv.length === 3;
+
+  const orderMutation = useMutation({
+    mutationFn: createOrder,
+    onSuccess: () => {
+      flushSync(() => navigate('/order-success', { replace: true }));
+      dispatch(setCart(cart.filter((item) => !item.checked)));
+      dispatch(setAddress({}));
+      dispatch(setReceiptAddress({}));
+      dispatch(setPayment({}));
+      toast.success('Siparişin alındı!');
+    },
+    onError: () => toast.error('Failed to create order'),
+  });
+
+  const handleOrder = () => {
+    orderMutation.mutate({
+      address_id: selectedAddress.id,
+      order_date: new Date().toISOString().slice(0, 19),
+      card_no: Number(selectedCard.card_no),
+      card_name: selectedCard.name_on_card,
+      card_expire_month: selectedCard.expire_month,
+      card_expire_year: selectedCard.expire_year,
+      card_ccv: Number(cvv),
+      price: Math.round(calculatePayable(total) * 100) / 100,
+      products: cart
+        .filter((item) => item.checked)
+        .map((item) => ({
+          product_id: item.product.id,
+          count: item.count,
+          detail: item.product.name,
+        })),
+    });
+  };
 
   return (
     <div className="py-6 text-text-color flex flex-col items-center lg:justify-between lg:max-w-275 lg:mx-auto">
@@ -45,6 +92,8 @@ function CreateOrderPage() {
           step={step}
           isStepReady={step === 'address' ? isAddressReady : isPaymentReady}
           onContinue={() => setStep('payment')}
+          onOrder={handleOrder}
+          isOrdering={orderMutation.isPending}
         />
       </div>
     </div>

@@ -5,7 +5,14 @@ import {
   calculatePayable,
 } from '@/store/actions/shoppingCartActions';
 
-function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
+function CreateOrderSummary({
+  total,
+  step,
+  isStepReady,
+  onContinue,
+  onOrder,
+  isOrdering,
+}) {
   const [checked, setChecked] = useState(false);
   const isAddressStep = step === 'address';
   let roundedTotal = Math.round(total * 100) / 100 + 0;
@@ -35,11 +42,20 @@ function CreateOrderSummary({ total, step, isStepReady, onContinue }) {
         </label>
       </span>
       <button
-        onClick={isAddressStep ? onContinue : () => console.log('Order')}
-        className="py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color disabled:bg-muted-color disabled:cursor-not-allowed"
-        disabled={isAddressStep ? !isStepReady : !checked || !isStepReady}
+        onClick={isAddressStep ? onContinue : onOrder}
+        className="flex items-center justify-center gap-3 py-2.5 rounded-md bg-primary-color text-btn-text text-light-text-color cursor-pointer hover:bg-hover-color disabled:bg-muted-color disabled:cursor-not-allowed"
+        disabled={
+          isAddressStep ? !isStepReady : !checked || !isStepReady || isOrdering
+        }
       >
-        {isAddressStep ? 'Kaydet ve Devam Et' : 'Siparişi Onayla'}
+        {isAddressStep
+          ? 'Kaydet ve Devam Et'
+          : isOrdering
+            ? 'Sipariş Veriliyor'
+            : 'Siparişi Onayla'}
+        {isOrdering && (
+          <span className="size-5 rounded-full border-2 border-light-text-color border-t-transparent animate-spin" />
+        )}
       </button>
       <div className="flex flex-col gap-2">
         <span className="text-text-color text-h6 flex justify-between">

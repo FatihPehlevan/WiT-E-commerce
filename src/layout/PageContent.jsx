@@ -8,6 +8,7 @@ import AboutUsPage from '@/pages/AboutUsPage';
 import SignUpPage from '@/pages/SignUpPage';
 import LoginPage from '@/pages/LoginPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage';
+import OrderSuccessPage from '@/pages/OrderSuccessPage';
 import ProtectedRoute from '@/components/PageContent/ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { calculateTotal } from '@/store/actions/shoppingCartActions';
@@ -42,6 +43,14 @@ export default function PageContent() {
             ) : (
               <Navigate to="/shoppingCart" replace state={{ from: location }} />
             )}
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/order-success"
+        element={
+          <ProtectedRoute>
+            <OrderSuccessPage />
           </ProtectedRoute>
         }
       />
