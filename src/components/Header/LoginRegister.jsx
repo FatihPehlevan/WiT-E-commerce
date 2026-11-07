@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import Gravatar from 'react-gravatar';
-import { setUser } from '@/store/actions/clientActions';
+import { setUser, clearFavorites } from '@/store/actions/clientActions';
 import {
   setAddress,
   setReceiptAddress,
@@ -24,6 +24,7 @@ export default function LoginRegister() {
     dispatch(setAddress({}));
     dispatch(setReceiptAddress({}));
     dispatch(setPayment({}));
+    dispatch(clearFavorites());
     queryClient.removeQueries({ queryKey: ['addresses'] });
     queryClient.removeQueries({ queryKey: ['cards'] });
     queryClient.removeQueries({ queryKey: ['orders'] });

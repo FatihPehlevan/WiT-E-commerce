@@ -4,6 +4,7 @@ import {
   SET_LANGUAGE,
   SET_ROLES,
   TOGGLE_FAVORITE,
+  CLEAR_FAVORITES,
 } from '../actions/clientActions.js';
 
 const initialState = {
@@ -26,6 +27,8 @@ const clientReducer = (state = initialState, action) => {
       return { ...state, language: action.payload };
     case SET_ROLES:
       return { ...state, roles: action.payload };
+    case CLEAR_FAVORITES:
+      return { ...state, favorites: [] };
     case TOGGLE_FAVORITE: {
       const isFavorite = state.favorites.some(
         (product) => product.id === action.payload.id,
