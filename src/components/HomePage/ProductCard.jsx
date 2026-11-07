@@ -1,23 +1,14 @@
 import { Link } from 'react-router';
 import Stars from '../ProductDetailsPage/Stars';
 import { useSelector } from 'react-redux';
-import slugify from 'slugify';
-
-const genders = {
-  k: 'kadin',
-  e: 'erkek',
-};
+import { getProductUrl } from '@/utils/getProductUrl';
 
 export default function ProductCard({ product }) {
   const categories = useSelector((state) => state.product.categories);
-  const { id, images, name, price, rating, stock, sell_count, category_id } =
-    product;
-  const productCategory = categories.find(
-    (category) => category.id === category_id,
-  );
+  const { images, name, price, rating, stock, sell_count } = product;
   return (
     <Link
-      to={`/shop/${genders[productCategory.gender]}/${slugify(productCategory.title, { lower: true })}/${productCategory.id}/${slugify(name, { lower: true })}/${id}`}
+      to={getProductUrl(product, categories)}
       className="flex flex-col gap-2.5 items-center"
     >
       <img
