@@ -9,6 +9,7 @@ import {
   EMPTY_CART,
   REMOVE_FROM_CART,
 } from '../actions/shoppingCartActions';
+import { LOGOUT } from '../actions/clientActions';
 
 const initialState = {
   cart: [],
@@ -27,6 +28,8 @@ export default function shoppingCartReducer(state = initialState, action) {
       return { ...state, address: action.payload };
     case SET_RECEIPT_ADDRESS:
       return { ...state, receiptAddress: action.payload };
+    case LOGOUT:
+      return { ...state, address: {}, receiptAddress: {}, payment: {} };
     case EMPTY_CART:
       return { ...state, cart: [] };
 

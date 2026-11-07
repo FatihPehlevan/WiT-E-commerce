@@ -3,12 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import Gravatar from 'react-gravatar';
-import { setUser, clearFavorites } from '@/store/actions/clientActions';
-import {
-  setAddress,
-  setReceiptAddress,
-  setPayment,
-} from '@/store/actions/shoppingCartActions';
+import { logout } from '@/store/actions/clientActions';
 import { setAuthToken } from '@/api/api';
 
 export default function LoginRegister() {
@@ -18,16 +13,10 @@ export default function LoginRegister() {
   const queryClient = useQueryClient();
   const user = useSelector((state) => state.client.user);
   const handleLogout = () => {
-    dispatch(setUser({}));
+    dispatch(logout());
     setAuthToken(null);
     localStorage.removeItem('userToken');
-    dispatch(setAddress({}));
-    dispatch(setReceiptAddress({}));
-    dispatch(setPayment({}));
-    dispatch(clearFavorites());
-    queryClient.removeQueries({ queryKey: ['addresses'] });
-    queryClient.removeQueries({ queryKey: ['cards'] });
-    queryClient.removeQueries({ queryKey: ['orders'] });
+    queryClient.clear();
 
     navigate('/');
     toast.success('Logged out');
