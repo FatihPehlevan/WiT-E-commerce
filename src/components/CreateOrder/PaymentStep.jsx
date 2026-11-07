@@ -12,7 +12,7 @@ import {
   calculatePayable,
 } from '@/store/actions/shoppingCartActions';
 
-function PaymentStep({ total }) {
+function PaymentStep({ total, cvv, setCvv }) {
   const { data: cards, isPending } = useCards();
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -56,7 +56,11 @@ function PaymentStep({ total }) {
             key={card.id}
             card={card}
             isSelected={selectedCard.id === card.id}
-            onSelect={() => dispatch(setPayment(card))}
+            onSelect={() => {
+              if (card.id === selectedCard.id) return;
+              dispatch(setPayment(card));
+              setCvv('');
+            }}
             onEdit={() => openEditForm(card)}
             onDelete={() => mutation.mutate(card.id)}
             isDeleting={mutation.isPending}
@@ -65,11 +69,24 @@ function PaymentStep({ total }) {
       </div>
 
       {selectedCard.id && (
-        <InstallmentOptions
-          amount={calculatePayable(total)}
-          selected={installment}
-          onSelect={setInstallment}
-        />
+        <>
+          <label className="flex flex-col gap-2 w-40">
+            <span className="font-bold">CVV</span>
+            <input
+              value={cvv}
+              onChange={(e) => setCvv(e.target.value.replace(/\D/g, ''))}
+              inputMode="numeric"
+              maxLength={3}
+              placeholder="123"
+              className="form-field w-full tracking-widest"
+            />
+          </label>
+          <InstallmentOptions
+            amount={calculatePayable(total)}
+            selected={installment}
+            onSelect={setInstallment}
+          />
+        </>
       )}
 
       <button
@@ -90,7 +107,10 @@ function PaymentStep({ total }) {
         <NewCardForm
           key={editingCard?.id ?? 'new'}
           card={editingCard}
-          onSaved={closeForm}
+          onSaved={() => {
+            closeForm();
+            setCvv('');
+          }}
         />
       )}
     </div>

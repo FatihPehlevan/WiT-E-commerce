@@ -14,10 +14,11 @@ function CreateOrderPage() {
   const selectedCard = useSelector((state) => state.cart.payment);
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [step, setStep] = useState('address');
+  const [cvv, setCvv] = useState('');
 
   const isAddressReady =
     !!selectedAddress.id && (sameAsShipping || !!receiptAddress.id);
-  const isPaymentReady = !!selectedCard.id;
+  const isPaymentReady = !!selectedCard.id && cvv.length === 3;
 
   return (
     <div className="py-6 text-text-color flex flex-col items-center lg:justify-between lg:max-w-275 lg:mx-auto">
@@ -36,7 +37,7 @@ function CreateOrderPage() {
               setSameAsShipping={setSameAsShipping}
             />
           ) : (
-            <PaymentStep total={total} />
+            <PaymentStep total={total} cvv={cvv} setCvv={setCvv} />
           )}
         </div>
         <CreateOrderSummary
