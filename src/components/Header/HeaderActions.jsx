@@ -18,9 +18,15 @@ export default function HeaderActions({ isMenuOpen, setIsMenuOpen }) {
       <div className="relative group">
         <button
           onClick={() => navigate('/shoppingCart')}
-          className="flex items-center justify-center cursor-pointer"
+          aria-label={`Sepet, ${cart.length} ürün`}
+          className="relative flex items-center justify-center cursor-pointer"
         >
           <i className="iconify-[lucide--shopping-cart] size-6 lg:size-4" />
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2.5 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-danger-color text-light-text-color text-[10px] font-bold leading-none">
+              {cart.length}
+            </span>
+          )}
         </button>
         {cart.length !== 0 && <CartDropdown />}
       </div>
